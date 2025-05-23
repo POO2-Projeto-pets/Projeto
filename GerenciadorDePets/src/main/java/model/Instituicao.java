@@ -10,6 +10,17 @@ package model;
  */
 public class Instituicao {
     private String cnpj;
+    private Endereco ender = new Endereco();
+
+    public Endereco getEnder() {
+        return ender;
+    }
+
+    public void setEnder(Endereco ender) {
+        this.ender = ender;
+    }
+   
+    
 
     public Instituicao(String cnpj) {
         this.cnpj = cnpj;

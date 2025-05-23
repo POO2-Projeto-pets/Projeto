@@ -19,6 +19,12 @@ public class Endereco {
         this.cep = cep;
     }
 
+    public Endereco() {
+        this.estado = "";
+        this.cidade = "";
+        this.cep = "";
+    }
+    
     public String getEstado() {
         return estado;
     }
