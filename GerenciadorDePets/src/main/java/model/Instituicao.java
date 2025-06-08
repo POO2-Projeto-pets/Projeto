@@ -25,6 +25,9 @@ public class Instituicao {
     public Instituicao(String cnpj) {
         this.cnpj = cnpj;
     }
+    public Instituicao() {
+        this.cnpj = "";
+    }
 
     public String getCnpj() {
         return cnpj;

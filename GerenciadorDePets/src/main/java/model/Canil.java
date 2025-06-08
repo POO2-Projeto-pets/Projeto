@@ -4,23 +4,24 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author bone_dust
  */
 public class Canil {
-    private Pet listaPets;
+    private ArrayList<Pet> listaPets = new ArrayList<>();
 
     public Canil(Pet listaPets) {
-        this.listaPets = listaPets;
+        
     }
 
-    public Pet getListaPets() {
+    public ArrayList<Pet> getListaPets() {
         return listaPets;
     }
 
-    public void setListaPets(Pet listaPets) {
-        this.listaPets = listaPets;
+    public void setListaPets(Pet object) {
+        this.listaPets.add(object);
     }
-    
 }

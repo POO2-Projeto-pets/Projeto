@@ -8,20 +8,26 @@ package model;
  *
  * @author bone_dust
  */
-public class Endereco {
+public class Endereco{
     private String estado;
     private String cidade;
+    private String rua;
+    private int numero;
     private String cep;
 
-    public Endereco(String estado, String cidade, String cep) {
+    public Endereco(String estado, String cidade, String rua, int numero, String cep){
         this.estado = estado;
         this.cidade = cidade;
+        this.rua = rua;
+        this.numero = numero;
         this.cep = cep;
     }
 
     public Endereco() {
         this.estado = "";
         this.cidade = "";
+        this.rua = "";
+        this.numero = 0;
         this.cep = "";
     }
     
@@ -39,6 +45,22 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+    
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public String getCep() {
