@@ -9,17 +9,20 @@ package model;
  * @author bone_dust
  */
 public class Pessoa {
-    private int cpf;
+    private String cpf;
 
-    public Pessoa(int cpf) {
+    public Pessoa(String cpf) {
         this.cpf = cpf;
     }
+    public Pessoa() {
+        this.cpf = "";
+    }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     

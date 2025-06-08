@@ -8,7 +8,7 @@ package model;
  *
  * @author bone_dust
  */
-public class PetShop extends {
+public class PetShop extends Servico{
     private String listaProdutos;
 
     public PetShop(String listaProdutos) {
