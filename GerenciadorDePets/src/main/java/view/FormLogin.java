@@ -15,6 +15,7 @@ public class FormLogin extends javax.swing.JFrame {
      */
     public FormLogin() {
         initComponents();
+        menuAdmin.setVisible(false);
     }
 
     /**
@@ -26,23 +27,246 @@ public class FormLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtfieldEmail = new javax.swing.JTextField();
+        lblSenha = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        txtfieldPassword = new javax.swing.JPasswordField();
+        tbutShowPassword = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        admCheckbox = new javax.swing.JCheckBox();
+        menuAdmin = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 0));
+
+        txtfieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldEmailActionPerformed(evt);
+            }
+        });
+
+        lblSenha.setText("Senha");
+        lblSenha.setToolTipText("");
+        lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblEmail.setText("E-mail");
+        lblEmail.setToolTipText("");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldPasswordActionPerformed(evt);
+            }
+        });
+
+        tbutShowPassword.setText("Mostrar");
+        tbutShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbutShowPasswordActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        admCheckbox.setText("Habilitar Menu Avançado");
+        admCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admCheckboxActionPerformed(evt);
+            }
+        });
+
+        menuAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        menuAdmin.setBorder(javax.swing.BorderFactory.createTitledBorder("Menu Avançado"));
+        menuAdmin.setAutoscrolls(true);
+        menuAdmin.setInheritsPopupMenu(true);
+        menuAdmin.setOpaque(false);
+
+        jLabel2.setText("Postgree:");
+
+        jLabel1.setText("Usuário:");
+
+        jLabel5.setText("Senha:");
+
+        jTextField1.setText("postgres");
+
+        jButton3.setText("Reset Default");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuAdminLayout = new javax.swing.GroupLayout(menuAdmin);
+        menuAdmin.setLayout(menuAdminLayout);
+        menuAdminLayout.setHorizontalGroup(
+            menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuAdminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(menuAdminLayout.createSequentialGroup()
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                            .addComponent(jTextField2))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
+        );
+        menuAdminLayout.setVerticalGroup(
+            menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuAdminLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuAdminLayout.createSequentialGroup()
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("E:\\OneDrive - alunos.utfpr.edu.br\\1. UTFPR\\Engenharia de Software\\4 - Semestre\\Programação Orientada a Objetos 2\\Trabalho Final\\Petmatch Logo nobackground resized.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtfieldEmail))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtfieldPassword)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tbutShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(admCheckbox)
+                            .addComponent(menuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(txtfieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbutShowPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(admCheckbox)
+                .addGap(18, 18, 18)
+                .addComponent(menuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldEmailActionPerformed
+
+    
+    
+    private void txtfieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldPasswordActionPerformed
+
+    private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
+        ShowPassword();
+    }//GEN-LAST:event_tbutShowPasswordActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void admCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCheckboxActionPerformed
+        CheckboxAdmVisibily();
+    }//GEN-LAST:event_admCheckboxActionPerformed
+
+    private void CheckboxAdmVisibily(){
+        if(admCheckbox.getSelectedObjects() == null){
+            menuAdmin.setVisible(false);
+        }
+        else{
+            menuAdmin.setVisible(true);
+        }
+        
+    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void ShowPassword(){
+        if(tbutShowPassword.isSelected()){
+            txtfieldPassword.setEchoChar((char) 0);
+        }
+        else{
+            txtfieldPassword.setEchoChar('*');
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +303,31 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox admCheckbox;
+    private javax.swing.JButton butPlacaGrafica1;
+    private javax.swing.JButton butPlacaGrafica2;
+    private javax.swing.JButton butPlacaMae1;
+    private javax.swing.JButton butPlacaMae2;
+    private javax.swing.JButton butProcessador1;
+    private javax.swing.JButton butProcessador2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JPanel menuAdmin;
+    private javax.swing.JPanel menuAdmin1;
+    private javax.swing.JPanel menuAdmin2;
+    private javax.swing.JToggleButton tbutShowPassword;
+    private javax.swing.JTextField txtfieldEmail;
+    private javax.swing.JPasswordField txtfieldPassword;
     // End of variables declaration//GEN-END:variables
 }
