@@ -10,10 +10,10 @@ import java.sql.Statement;
 
 /**
  *
- * @author LucasTheobaldo
+ * @author bone_dust
  */
-public class UsuarioBD {
-    static Connection con = null;
+public class PessoaBD {
+     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
     static String user = "postgres";
@@ -22,19 +22,16 @@ public class UsuarioBD {
     Statement st = null;
         
     public void criaTable() {
-        String sql1 = "CREATE TABLE IF NOT EXISTS Usiario ("
-            + "uid int not null primary key,"
-            + "nome text,"
-            + "email text,"
-            + "senha text"
+        String sql1 = "CREATE TABLE IF NOT EXISTS Pessoa ("
+            + "cpf int"
             + ")";
         try{
             Class.forName(driver);
             con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela Usiario...");    
+            System.out.println("Criando a tabela...");    
             st = con.createStatement();
             st.executeUpdate(sql1);
-            System.out.println("Sucesso");
+            System.out.println("Tabela criada com sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
@@ -42,15 +39,4 @@ public class UsuarioBD {
         }
 
     }
-    
-    
-    public void cadastrarUser() {
-        // Cadastra um usúario no BD
-    }
-    
-    public int logarUser() {
-        // Verifica se um usúario existe no BD
-        return 0;
-    }
-    
 }
