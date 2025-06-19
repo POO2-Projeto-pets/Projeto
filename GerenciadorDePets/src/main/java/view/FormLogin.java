@@ -4,20 +4,28 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author leonc
  */
 public class FormLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormLogin
-     */
+    private static FormLogin gerFormLogin;
+    
     public FormLogin() {
         initComponents();
         menuAdmin.setVisible(false);
     }
 
+    public static FormLogin GenFormLogin(){ //3º passo
+        if(gerFormLogin == null){
+            gerFormLogin = new FormLogin();
+        }
+        return gerFormLogin;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,41 +40,54 @@ public class FormLogin extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         txtfieldPassword = new javax.swing.JPasswordField();
         tbutShowPassword = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCadastro = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         admCheckbox = new javax.swing.JCheckBox();
         menuAdmin = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        lblbduser = new javax.swing.JLabel();
+        lblbdsenha = new javax.swing.JLabel();
+        txtfieldbdsenha = new javax.swing.JTextField();
+        txtfieldbduser = new javax.swing.JTextField();
+        btbresetbdinfo = new javax.swing.JButton();
+        txtfieldbdurl = new javax.swing.JTextField();
+        lblbdurl = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 51, 0));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(520, 590));
+        setMinimumSize(new java.awt.Dimension(520, 590));
+        setUndecorated(true);
+        setSize(new java.awt.Dimension(520, 590));
 
+        txtfieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtfieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfieldEmailActionPerformed(evt);
             }
         });
 
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSenha.setText("Senha");
         lblSenha.setToolTipText("");
         lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblEmail.setText("E-mail");
         lblEmail.setToolTipText("");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        txtfieldPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtfieldPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfieldPasswordActionPerformed(evt);
             }
         });
 
+        tbutShowPassword.setBackground(new java.awt.Color(204, 204, 204));
+        tbutShowPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tbutShowPassword.setText("Mostrar");
         tbutShowPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,21 +95,28 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastro.setBackground(new java.awt.Color(30, 74, 145));
+        btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro.setText("Cadastrar");
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadastroActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Login");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setBackground(new java.awt.Color(30, 74, 145));
+        btnEntrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
 
-        admCheckbox.setText("Habilitar Menu Avançado");
+        admCheckbox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        admCheckbox.setText("Habilitar Menu Conexão");
         admCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 admCheckboxActionPerformed(evt);
@@ -101,20 +129,49 @@ public class FormLogin extends javax.swing.JFrame {
         menuAdmin.setInheritsPopupMenu(true);
         menuAdmin.setOpaque(false);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Postgree:");
 
-        jLabel1.setText("Usuário:");
+        lblbduser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblbduser.setText("Usuário:");
 
-        jLabel5.setText("Senha:");
+        lblbdsenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblbdsenha.setText("Senha:");
 
-        jTextField1.setText("postgres");
-
-        jButton3.setText("Reset Default");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldbdsenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldbdsenha.setText("utfpr");
+        txtfieldbdsenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                txtfieldbdsenhaActionPerformed(evt);
             }
         });
+
+        txtfieldbduser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldbduser.setText("postgres");
+        txtfieldbduser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldbduserActionPerformed(evt);
+            }
+        });
+
+        btbresetbdinfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btbresetbdinfo.setText("Reset Default");
+        btbresetbdinfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbresetbdinfoActionPerformed(evt);
+            }
+        });
+
+        txtfieldbdurl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldbdurl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
+        txtfieldbdurl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldbdurlActionPerformed(evt);
+            }
+        });
+
+        lblbdurl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblbdurl.setText("URL:");
 
         javax.swing.GroupLayout menuAdminLayout = new javax.swing.GroupLayout(menuAdmin);
         menuAdmin.setLayout(menuAdminLayout);
@@ -126,15 +183,17 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(menuAdminLayout.createSequentialGroup()
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                            .addComponent(lblbdsenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblbduser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblbdurl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
+                            .addComponent(txtfieldbduser)
+                            .addComponent(txtfieldbdsenha)
+                            .addComponent(txtfieldbdurl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btbresetbdinfo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuAdminLayout.setVerticalGroup(
             menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,18 +204,31 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuAdminLayout.createSequentialGroup()
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblbduser)
+                            .addComponent(txtfieldbduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(lblbdurl)
+                            .addComponent(txtfieldbdurl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblbdsenha)
+                            .addComponent(txtfieldbdsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btbresetbdinfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("E:\\OneDrive - alunos.utfpr.edu.br\\1. UTFPR\\Engenharia de Software\\4 - Semestre\\Programação Orientada a Objetos 2\\Trabalho Final\\Petmatch Logo nobackground resized.png")); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sources/logo.png"))); // NOI18N
+
+        btnExit.setBackground(new java.awt.Color(255, 153, 153));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(51, 51, 51));
+        btnExit.setText("Sair");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,54 +237,54 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                    .addComponent(menuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtfieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfieldEmail))
+                        .addComponent(txtfieldPassword)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbutShowPassword))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtfieldPassword)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tbutShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExit))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(admCheckbox)
-                            .addComponent(menuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmail)
-                    .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(txtfieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbutShowPassword))
+                .addComponent(lblEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tbutShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtfieldPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(admCheckbox)
                 .addGap(18, 18, 18)
                 .addComponent(menuAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,13 +304,13 @@ public class FormLogin extends javax.swing.JFrame {
         ShowPassword();
     }//GEN-LAST:event_tbutShowPasswordActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void admCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCheckboxActionPerformed
         CheckboxAdmVisibily();
@@ -254,10 +326,38 @@ public class FormLogin extends javax.swing.JFrame {
         
     }
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btbresetbdinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbresetbdinfoActionPerformed
+        resetbdinfo();
+    }//GEN-LAST:event_btbresetbdinfoActionPerformed
 
+    private void resetbdinfo(){
+        txtfieldbduser.setText("postgres");
+        txtfieldbdurl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
+        txtfieldbdsenha.setText("utfpr");
+    }
+    
+    private void txtfieldbdurlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbdurlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldbdurlActionPerformed
+
+    private void txtfieldbdsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbdsenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldbdsenhaActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        sair();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtfieldbduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbduserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldbduserActionPerformed
+
+    public void sair(){
+        if(JOptionPane.showConfirmDialog(null,"Deseja realmente sair?","Confirmação de Saída",JOptionPane.YES_NO_OPTION) == 0){
+            System.exit(0);
+        }
+    }
+    
     private void ShowPassword(){
         if(tbutShowPassword.isSelected()){
             txtfieldPassword.setEchoChar((char) 0);
@@ -304,30 +404,23 @@ public class FormLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox admCheckbox;
-    private javax.swing.JButton butPlacaGrafica1;
-    private javax.swing.JButton butPlacaGrafica2;
-    private javax.swing.JButton butPlacaMae1;
-    private javax.swing.JButton butPlacaMae2;
-    private javax.swing.JButton butProcessador1;
-    private javax.swing.JButton butProcessador2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btbresetbdinfo;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblbdsenha;
+    private javax.swing.JLabel lblbdurl;
+    private javax.swing.JLabel lblbduser;
     private javax.swing.JPanel menuAdmin;
-    private javax.swing.JPanel menuAdmin1;
-    private javax.swing.JPanel menuAdmin2;
     private javax.swing.JToggleButton tbutShowPassword;
     private javax.swing.JTextField txtfieldEmail;
     private javax.swing.JPasswordField txtfieldPassword;
+    private javax.swing.JTextField txtfieldbdsenha;
+    private javax.swing.JTextField txtfieldbdurl;
+    private javax.swing.JTextField txtfieldbduser;
     // End of variables declaration//GEN-END:variables
 }

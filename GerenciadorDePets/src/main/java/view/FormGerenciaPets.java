@@ -14,23 +14,19 @@ import javax.swing.table.DefaultTableModel;
 public class FormGerenciaPets extends javax.swing.JFrame{
 
     public int alterar(int i){return 0;}
-    
-    
 
-    //MÉTODO SINGLETON
-    private static FormGerenciaPets gerPlacaMae;
+    private static FormGerenciaPets gerPets;
     
     private FormGerenciaPets() {
         initComponents();
         hideAll();
     }
     
-    public static FormGerenciaPets GenGerenciaPlacaMae(){ //3º passo
-        if(gerPlacaMae == null){
-            gerPlacaMae = new FormGerenciaPets();
+    public static FormGerenciaPets GenGerenciaPets(){ //3º passo
+        if(gerPets == null){
+            gerPets = new FormGerenciaPets();
         }
-    
-        return gerPlacaMae;
+        return gerPets;
     }
 
     /**

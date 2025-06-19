@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author bone_dust
  */
-public class Canil {
+public class Canil extends Servico{
     private ArrayList<Pet> listaPets = new ArrayList<>();
 
     public Canil(Pet listaPets) {

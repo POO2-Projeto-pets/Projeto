@@ -15,14 +15,7 @@ import javax.swing.table.TableRowSorter;
  * @author leonc
  */
 public class FormTabelaPets extends javax.swing.JFrame {
-    
-    public void tabela(){}
-    public int inserir(int i){return 0;}
-    public void consultar(){}
-    public int alterar(int i){return 0;}
-    public void excluir(int i){}
-    
-    
+ 
     //MÉTODO SINGLETON
     private static FormTabelaPets tablePlacaMae;
     

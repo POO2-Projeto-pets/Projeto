@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import Jm.JMascara;
 
 /**
  *
@@ -15,6 +16,7 @@ public class FormCadastro extends javax.swing.JFrame {
      */
     public FormCadastro() {
         initComponents();
+        IDWarning.setVisible(false);
     }
 
     /**
@@ -26,22 +28,467 @@ public class FormCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        lblEmail = new javax.swing.JLabel();
+        txtfieldEmail = new javax.swing.JTextField();
+        lblSenha = new javax.swing.JLabel();
+        txtfieldSenha = new javax.swing.JPasswordField();
+        btnCadastro = new javax.swing.JButton();
+        tbutShowPassword = new javax.swing.JToggleButton();
+        lblNome = new javax.swing.JLabel();
+        txtfieldNome = new javax.swing.JTextField();
+        lblSenha2 = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
+        txtfieldID = new javax.swing.JTextField();
+        btnCadastro1 = new javax.swing.JButton();
+        txtfieldSenha1 = new javax.swing.JPasswordField();
+        lblEndereco = new javax.swing.JLabel();
+        txtfieldEndereco = new javax.swing.JTextField();
+        lblEstado = new javax.swing.JLabel();
+        combboxEstado = new javax.swing.JComboBox<>();
+        txtfieldCidade = new javax.swing.JTextField();
+        lblCidade = new javax.swing.JLabel();
+        txtfieldEndNum = new javax.swing.JTextField();
+        lblEndNum = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        warningsenha = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        IDWarning = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEmail.setText("Digite seu E-Mail:");
+        lblEmail.setToolTipText("");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldEmailActionPerformed(evt);
+            }
+        });
+
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSenha.setText("Digite uma Senha:");
+        lblSenha.setToolTipText("");
+        lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldSenhaActionPerformed(evt);
+            }
+        });
+
+        btnCadastro.setBackground(new java.awt.Color(255, 51, 102));
+        btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnCadastro.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro.setText("Cancelar");
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroActionPerformed(evt);
+            }
+        });
+
+        tbutShowPassword.setBackground(new java.awt.Color(204, 204, 204));
+        tbutShowPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tbutShowPassword.setText("Mostrar Senha");
+        tbutShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbutShowPasswordActionPerformed(evt);
+            }
+        });
+
+        lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNome.setText("Digite seu Nome:");
+        lblNome.setToolTipText("");
+        lblNome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldNomeActionPerformed(evt);
+            }
+        });
+
+        lblSenha2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSenha2.setText("Digite novamente a senha:");
+        lblSenha2.setToolTipText("");
+        lblSenha2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblID.setText("Digite seu CPF | CNPJ:");
+        lblID.setToolTipText("");
+        lblID.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldID.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                txtfieldIDMouseMoved(evt);
+            }
+        });
+        txtfieldID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldIDActionPerformed(evt);
+            }
+        });
+        txtfieldID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfieldIDKeyReleased(evt);
+            }
+        });
+
+        btnCadastro1.setBackground(new java.awt.Color(30, 74, 145));
+        btnCadastro1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnCadastro1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastro1.setText("Cadastrar");
+        btnCadastro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastro1ActionPerformed(evt);
+            }
+        });
+
+        txtfieldSenha1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldSenha1ActionPerformed(evt);
+            }
+        });
+
+        lblEndereco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEndereco.setText("Endereço:");
+        lblEndereco.setToolTipText("");
+        lblEndereco.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldEndereco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldEnderecoActionPerformed(evt);
+            }
+        });
+
+        lblEstado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEstado.setText("Estado:");
+        lblEstado.setToolTipText("");
+        lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        combboxEstado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        combboxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins", "Distrito Federal" }));
+
+        txtfieldCidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldCidadeActionPerformed(evt);
+            }
+        });
+
+        lblCidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCidade.setText("Cidade:");
+        lblCidade.setToolTipText("");
+        lblCidade.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        txtfieldEndNum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldEndNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfieldEndNumActionPerformed(evt);
+            }
+        });
+
+        lblEndNum.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEndNum.setText("Número:");
+        lblEndNum.setToolTipText("");
+        lblEndNum.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(204, 0, 51));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("A senha deve estar dentro do padrão:\n* Minimo de 8 caracteres;\n* Máximo de 16 caracteres;");
+        jTextArea1.setToolTipText("");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setEnabled(false);
+        warningsenha.setViewportView(jTextArea1);
+
+        IDWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        IDWarning.setForeground(new java.awt.Color(255, 0, 0));
+        IDWarning.setText("CNPJ/CPF Incorreto!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtfieldNome)
+                            .addComponent(txtfieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtfieldID)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCadastro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCadastro1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtfieldSenha1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lblSenha)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtfieldSenha))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tbutShowPassword))
+                            .addComponent(txtfieldCidade)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEstado)
+                                    .addComponent(combboxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtfieldEndNum)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblEndNum)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jSeparator1)
+                            .addComponent(txtfieldEndereco)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNome)
+                                    .addComponent(lblSenha2)
+                                    .addComponent(lblCidade)
+                                    .addComponent(lblEndereco)
+                                    .addComponent(lblEmail)
+                                    .addComponent(warningsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(IDWarning)
+                        .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(IDWarning))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tbutShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtfieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSenha2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(warningsenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEndereco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCidade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtfieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEstado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(combboxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEndNum)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtfieldEndNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldEmailActionPerformed
+
+    private void txtfieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldSenhaActionPerformed
+
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastroActionPerformed
+
+    private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
+        ShowPassword();
+    }//GEN-LAST:event_tbutShowPasswordActionPerformed
+
+    private void ShowPassword(){
+        if(tbutShowPassword.isSelected()){
+            txtfieldSenha.setEchoChar((char) 0);
+        }
+        else{
+            txtfieldSenha.setEchoChar('*');
+        }
+    }
+    
+    private void txtfieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldNomeActionPerformed
+    
+    private void txtfieldIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfieldIDKeyReleased
+        txtfieldID.setText(JMascara.GetJmascaraCpfCnpj((txtfieldID.getText())));
+    }//GEN-LAST:event_txtfieldIDKeyReleased
+
+    private void txtfieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldIDActionPerformed
+
+    }//GEN-LAST:event_txtfieldIDActionPerformed
+
+    private void btnCadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastro1ActionPerformed
+
+    private void txtfieldSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldSenha1ActionPerformed
+
+    private void txtfieldIDMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtfieldIDMouseMoved
+        acoes();
+    }//GEN-LAST:event_txtfieldIDMouseMoved
+
+    private void acoes(){
+            if(validarCpf(JMascara.GetJmascaraLimpar(txtfieldID.getText())) == true){
+                IDWarning.setVisible(false);
+            }
+            else if(validarCnpj(JMascara.GetJmascaraLimpar(txtfieldID.getText())) == true){
+                IDWarning.setVisible(false);
+            }
+            else{
+                if(txtfieldID.getText().isEmpty() != true){
+                    IDWarning.setVisible(true);
+                }
+            }
+ 
+    }
+    
+    private void txtfieldEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldEnderecoActionPerformed
+
+    private void txtfieldCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldCidadeActionPerformed
+
+    private void txtfieldEndNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEndNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfieldEndNumActionPerformed
+
+    public boolean validarCpf(String cpf) {
+        if (cpf.equals("00000000000") || cpf.equals("11111111111") ||
+            cpf.equals("22222222222") || cpf.equals("33333333333") ||
+            cpf.equals("44444444444") || cpf.equals("55555555555") ||
+            cpf.equals("66666666666") || cpf.equals("77777777777") || 
+            cpf.equals("88888888888") || cpf.equals("99999999999") || (cpf.length() != 11)){
+            return(false);
+        }
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+        sm = 0; peso = 10; for (i=0; i<9; i++) {
+            num = (cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+        }
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+            dig10 = '0';
+        } else {
+            dig10 = (char)(r + 48);
+        }
+        sm = 0;
+        peso = 11;
+        for(i=0; i<10; i++) {
+            num = (cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+        }
+        r = 11 - (sm % 11);
+        if ((r == 10) || (r == 11)) {
+            dig11 = '0';
+        } else {
+            dig11 = (char)(r + 48);
+        }
+        if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10))) {
+            return(true);
+        } else {
+            return(false);
+        }
+    }    
+    
+    public static boolean validarCnpj(String CNPJ) {
+        if (CNPJ.equals("00000000000000") || CNPJ.equals("11111111111111") ||
+            CNPJ.equals("22222222222222") || CNPJ.equals("33333333333333") ||
+            CNPJ.equals("44444444444444") || CNPJ.equals("55555555555555") ||
+            CNPJ.equals("66666666666666") || CNPJ.equals("77777777777777") ||
+            CNPJ.equals("88888888888888") || CNPJ.equals("99999999999999") || (CNPJ.length() != 14)){
+            return(false);
+        }
+        char dig13, dig14;
+        int sm, i, r, num, peso;
+        sm = 0;
+        peso = 2;
+        for (i=11; i>=0; i--) {
+            num = (int)(CNPJ.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso + 1;
+            if (peso == 10){
+                peso = 2;
+            }
+        }
+
+        r = sm % 11;
+        if ((r == 0) || (r == 1))
+            dig13 = '0';
+        else dig13 = (char)((11-r) + 48);
+        sm = 0;
+        peso = 2;
+        for (i=12; i>=0; i--) {
+            num = (int)(CNPJ.charAt(i)- 48);
+            sm = sm + (num * peso);
+            peso = peso + 1;
+            if (peso == 10){
+                peso = 2;
+            }
+        }
+        r = sm % 11;
+        if ((r == 0) || (r == 1)){
+            dig14 = '0';
+        }
+        else dig14 = (char)((11-r) + 48);
+        if ((dig13 == CNPJ.charAt(12)) && (dig14 == CNPJ.charAt(13))){
+            return(true);
+        }
+        else return(false);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -78,5 +525,31 @@ public class FormCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDWarning;
+    private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnCadastro1;
+    private javax.swing.JComboBox<String> combboxEstado;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblCidade;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEndNum;
+    private javax.swing.JLabel lblEndereco;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblSenha2;
+    private javax.swing.JToggleButton tbutShowPassword;
+    private javax.swing.JTextField txtfieldCidade;
+    private javax.swing.JTextField txtfieldEmail;
+    private javax.swing.JTextField txtfieldEndNum;
+    private javax.swing.JTextField txtfieldEndereco;
+    private javax.swing.JTextField txtfieldID;
+    private javax.swing.JTextField txtfieldNome;
+    private javax.swing.JPasswordField txtfieldSenha;
+    private javax.swing.JPasswordField txtfieldSenha1;
+    private javax.swing.JScrollPane warningsenha;
     // End of variables declaration//GEN-END:variables
 }

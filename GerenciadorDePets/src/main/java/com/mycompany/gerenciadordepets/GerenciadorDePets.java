@@ -3,6 +3,7 @@
  */
 
 package com.mycompany.gerenciadordepets;
+import view.*;
 
 /**
  *
@@ -11,6 +12,6 @@ package com.mycompany.gerenciadordepets;
 public class GerenciadorDePets {
 
     public static void main(String[] args) {
-        System.out.println("Hello World! hahahah");
+        FormLogin.GenFormLogin().setVisible(true);
     }
 }

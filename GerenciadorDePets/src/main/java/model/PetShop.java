@@ -4,23 +4,24 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author bone_dust
  */
 public class PetShop extends Servico{
-    private String listaProdutos;
+    private ArrayList<Produto> listaProdutos = new ArrayList<>();
 
-    public PetShop(String listaProdutos) {
-        this.listaProdutos = listaProdutos;
+    public PetShop(){
+        
     }
 
-    public String getListaProdutos() {
+    public ArrayList<Produto> getListaProdutos() {
         return listaProdutos;
     }
 
-    public void setListaProdutos(String listaProdutos) {
-        this.listaProdutos = listaProdutos;
+    public void setListaProdutos(Produto object) {
+        this.listaProdutos.add(object);
     }
-    
 }

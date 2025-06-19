@@ -8,7 +8,7 @@ package model;
  *
  * @author leonc
  */
-public class Servico {
+public class Servico extends Usuario{
     private String cnpj;
 
     public Servico(String cnpj) {
