@@ -39,7 +39,7 @@ public class UsuarioBD {
             System.out.println("Erro ao criar a tabela Usuario...");
             System.out.println(e);
         }
-
+        
     }
     
     

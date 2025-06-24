@@ -35,5 +35,24 @@ public class ServicoBD {
             System.out.println("Erro ao criar a tabela Servico...");  
             System.out.println(e);
         }
+
+        
+        String sqlPkey = "DO $$ BEGIN "
+            +"ALTER TABLE Servico ADD PRIMARY KEY (uid);"
+            +"EXCEPTION "
+            +"WHEN syntax_error_or_access_rule_violation THEN null;"
+            +"END $$";
+        try{
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,senha); 
+            st = con.createStatement();
+            st.executeUpdate(sqlPkey);
+            st.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao criar a PK de Servico...(ServicoBD)"); 
+            System.out.println(e);
+        }
+
     }
 }
