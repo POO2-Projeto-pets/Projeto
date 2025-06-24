@@ -34,32 +34,30 @@ public class EnderecoBD {
         try{
             Class.forName(driver);
             con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela Endereco...");    
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
-            System.out.println("Tabela criada com sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar a tabela Endereco..."); 
             System.out.println(e);
         }
         
         String sqlRel = "DO $$ BEGIN "
-            +"ALTER TABLE Usiario ADD CONSTRAINT fk_usuario_endereco FOREIGN KEY (uid) REFERENCES Endereco (uid) DEFERRABLE INITIALLY DEFERRED;"
+            +"ALTER TABLE Usuario ADD CONSTRAINT fk_usuario_endereco FOREIGN KEY (uid) REFERENCES Endereco (uid) DEFERRABLE INITIALLY DEFERRED;"
             +"EXCEPTION "
             +"WHEN duplicate_object THEN null;"
             +"END $$";
         
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a relacão usuario_endereco...");    
+            con = DriverManager.getConnection(url,user,senha);  
             st = con.createStatement();
             st.executeUpdate(sqlRel);
-            System.out.println("Sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar relacão usuario_endereco..."); 
             System.out.println(e);
         }
        

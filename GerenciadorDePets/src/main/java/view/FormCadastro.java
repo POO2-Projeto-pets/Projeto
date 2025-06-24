@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import Jm.JMascara;
+//import Jm.JMascara;
 
 /**
  *
@@ -356,7 +356,7 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfieldNomeActionPerformed
     
     private void txtfieldIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfieldIDKeyReleased
-        txtfieldID.setText(JMascara.GetJmascaraCpfCnpj((txtfieldID.getText())));
+        //txtfieldID.setText(JMascara.GetJmascaraCpfCnpj((txtfieldID.getText())));
     }//GEN-LAST:event_txtfieldIDKeyReleased
 
     private void txtfieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldIDActionPerformed
@@ -376,6 +376,7 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfieldIDMouseMoved
 
     private void acoes(){
+        /*
             if(validarCpf(JMascara.GetJmascaraLimpar(txtfieldID.getText())) == true){
                 IDWarning.setVisible(false);
             }
@@ -387,6 +388,7 @@ public class FormCadastro extends javax.swing.JFrame {
                     IDWarning.setVisible(true);
                 }
             }
+        */
  
     }
     

@@ -6,9 +6,9 @@ package model;
 
 /**
  *
- * @author bone_dust
+ * @author LucasTheobaldo
  */
-public class Pessoa {
+public class Pessoa extends Usuario{
     private String cpf;
 
     public Pessoa(String cpf) {

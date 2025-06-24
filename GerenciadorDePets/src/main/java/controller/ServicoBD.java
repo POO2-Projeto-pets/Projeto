@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 /**
  *
- * @author bone_dust
+ * @author LucasTheobaldo
  */
-public class ServicosBD {
+public class ServicoBD {
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -21,19 +21,18 @@ public class ServicosBD {
     Statement st = null;
         
     public void criaTable() {
-        String sql1 = "CREATE TABLE IF NOT EXISTS Servicos ("
+        String sqlCreate = "CREATE TABLE IF NOT EXISTS Servico ("
             + "cnpj int"
-            + ")INHERITS (Usiario)";
+            + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela servicos...");    
+            con = DriverManager.getConnection(url,user,senha);  
             st = con.createStatement();
-            st.executeUpdate(sql1);
-            System.out.println("Sucesso");
+            st.executeUpdate(sqlCreate);
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar a tabela Servico...");  
             System.out.println(e);
         }
 

@@ -22,7 +22,7 @@ public class UsuarioBD {
     Statement st = null;
         
     public void criaTable() {
-        String sql1 = "CREATE TABLE IF NOT EXISTS Usiario ("
+        String sql1 = "CREATE TABLE IF NOT EXISTS Usuario ("
             + "uid int not null primary key,"
             + "nome text,"
             + "email text,"
@@ -30,14 +30,13 @@ public class UsuarioBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela Usiario...");    
+            con = DriverManager.getConnection(url,user,senha);   
             st = con.createStatement();
             st.executeUpdate(sql1);
-            System.out.println("Sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar a tabela Usuario...");
             System.out.println(e);
         }
 

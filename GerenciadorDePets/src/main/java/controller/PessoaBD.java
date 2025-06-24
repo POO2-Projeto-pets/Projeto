@@ -5,12 +5,14 @@
 package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Pessoa;
 
 /**
  *
- * @author bone_dust // teste
+ * @author LucasTheobaldo
  */
 public class PessoaBD {
      static Connection con = null;
@@ -24,19 +26,42 @@ public class PessoaBD {
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Pessoa ("
             + "cpf int"
-            + ")";
+            + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela...");    
+            con = DriverManager.getConnection(url,user,senha); 
             st = con.createStatement();
             st.executeUpdate(sql1);
-            System.out.println("Tabela criada com sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar a tabela Pessoa...");
             System.out.println(e);
         }
 
     }
+    
+    PreparedStatement ps = null;
+        
+        public void inserir(Pessoa pessoa){
+            String sql1 = "INSERT INTO Pessoa VALUES(?,?,?,?,?)";
+            try{//inserção de dados
+                Class.forName(driver);
+                con = DriverManager.getConnection(url,user,senha);
+                System.out.println("Inserindo dados de Pessoa...");
+                ps = con.prepareStatement(sql1);
+                ps.setInt(1, pessoa.getId());
+                ps.setString(2, pessoa.getNome());
+                ps.setString(3, pessoa.getEmail());
+                ps.setString(4, pessoa.getSenha());
+                ps.setString(5, pessoa.getCpf());
+                ps.execute();
+                System.out.println("Dados inseridos com sucesso!");
+                
+                ps.close();
+                con.close();
+            }catch(ClassNotFoundException | SQLException e){
+                System.out.println(e);
+            }
+        }
 }

@@ -12,8 +12,6 @@ import java.sql.Statement;
  * @author LucasTheobaldo
  */
 
-//https://stackoverflow.com/questions/72550576/save-image-files-as-bytea-in-postgresql-and-retrieving-them-to-display-on-html-t
-
 public class PetBD {
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
@@ -25,7 +23,8 @@ public class PetBD {
         
     public void criaTable() {
         
-        //"CREATE TYPE IF NOT EXISTS gen AS ENUM ()";
+        //https://stackoverflow.com/questions/12881782/java-db-connection
+        //https://stackoverflow.com/questions/23979842/convert-base64-string-to-image
         
         String sqlenum =  "DO $$ BEGIN "
             +"CREATE TYPE gen AS ENUM('macho', 'femea');"
@@ -35,19 +34,19 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando enum pet genero...");    
+            con = DriverManager.getConnection(url,user,senha); 
             st = con.createStatement();
             st.executeUpdate(sqlenum);
-            System.out.println("Sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar o enum gen...(PetBD)");
             System.out.println(e);
         }
 
-        String sql1 = "CREATE TABLE IF NOT EXISTS Pet ("         
-            + "pid int,"
+        String sqlCreate = "CREATE TABLE IF NOT EXISTS Pet ("         
+            + "user_id int,"
+            + "pet_id int,"    
             + "foto text,"
             + "dataNascimento date,"
             + "raca text,"
@@ -61,29 +60,49 @@ public class PetBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela pet...");    
+            con = DriverManager.getConnection(url,user,senha); 
             st = con.createStatement();
-            st.executeUpdate(sql1);
-            System.out.println("Sucesso");
+            st.executeUpdate(sqlCreate);
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar a tabela Pet...(PetBD)");
             System.out.println(e);
         }
         
-        String sqlRel = "ALTER TABLE Pet ADD FOREIGN KEY (pid) REFERENCES Usiario (uid) DEFERRABLE INITIALLY DEFERRED";               
+        String sqlRel = "DO $$ BEGIN "
+            +"ALTER TABLE Pet ADD CONSTRAINT fk_usuario FOREIGN KEY (user_id) REFERENCES Usuario (uid) DEFERRABLE INITIALLY DEFERRED;"
+            +"EXCEPTION "
+            +"WHEN duplicate_object THEN null;"
+            +"END $$";
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a relacão com Pet...");    
+            con = DriverManager.getConnection(url,user,senha);   
             st = con.createStatement();
             st.executeUpdate(sqlRel);
-            System.out.println("Sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao criar relacão pet_user...(PetBD)");
+            System.out.println(e);
+        }
+        
+        sqlRel = "DO $$ BEGIN "
+            +"ALTER TABLE Pet ADD CONSTRAINT fk_canil FOREIGN KEY (pet_id) REFERENCES Canil (uid) DEFERRABLE INITIALLY DEFERRED;"
+            +"EXCEPTION "
+            +"WHEN duplicate_object THEN null;"
+            +"END $$";
+                
+        try{
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,senha); 
+            st = con.createStatement();
+            st.executeUpdate(sqlRel);
+            st.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao criar relacão pet_canil...(PetBD)"); 
             System.out.println(e);
         }
 

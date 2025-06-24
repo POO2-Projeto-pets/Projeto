@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author bone_dust
+ * @author LucasTheobaldo
  */
 public class VeterinarioBD {
     static Connection con = null;
@@ -23,19 +23,53 @@ public class VeterinarioBD {
         
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Veterinario ("
-            + "crmv text,"
+            + "crmv text primary key,"
             + "especialidade text"
-            + ")";
+            + ")INHERITS (Servico)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Criando a tabela...");    
+            con = DriverManager.getConnection(url,user,senha);   
             st = con.createStatement();
             st.executeUpdate(sql1);
-            System.out.println("Tabela criada com sucesso");
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao criar a tabela Veterinario...(VeterinarioBD)");
+            System.out.println(e);
+        }
+        
+        String sqlRel = "CREATE TABLE IF NOT EXISTS clinica_veterinario ("
+            + "veterinario_id text,"
+            + "clinica_id int,"
+            + " PRIMARY KEY (veterinario_id, clinica_id)"
+            + ")";
+        try{
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,senha);  
+            st = con.createStatement();
+            st.executeUpdate(sqlRel);
+            st.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao criar a tabela clinica_veterinario...(VeterinarioDB)");  
+            System.out.println(e);
+        }
+        
+        sqlRel = "DO $$ BEGIN "
+            +"ALTER TABLE clinica_veterinario ADD CONSTRAINT fk_clinica FOREIGN KEY(clinica_id) REFERENCES Clinica(uid) DEFERRABLE INITIALLY DEFERRED;"
+            +"ALTER TABLE clinica_veterinario ADD CONSTRAINT fk_veterinario FOREIGN KEY(veterinario_id) REFERENCES Veterinario(crmv) DEFERRABLE INITIALLY DEFERRED;"
+            +"EXCEPTION "
+            +"WHEN duplicate_object THEN null;"
+            +"END $$";
+        try{
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,senha);  
+            st = con.createStatement();
+            st.executeUpdate(sqlRel);
+            st.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao criar relacão clinica_veterinario...(VeterinarioDB)");
             System.out.println(e);
         }
 
