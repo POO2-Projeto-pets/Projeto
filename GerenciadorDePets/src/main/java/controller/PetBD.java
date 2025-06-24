@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Pet;
 /**
  *
  * @author LucasTheobaldo
@@ -105,6 +106,9 @@ public class PetBD {
             System.out.println("\nErro ao criar relacão pet_canil...(PetBD)"); 
             System.out.println(e);
         }
-
+    }
+    
+    public Pet consultarPet(int id){
+        return null;
     }
 }

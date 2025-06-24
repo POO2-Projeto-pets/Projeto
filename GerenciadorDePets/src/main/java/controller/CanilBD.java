@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Canil;
 /**
  *
  * @author LucasTheobaldo
@@ -52,6 +53,9 @@ public class CanilBD {
             System.out.println("\nErro ao criar a PK de Canil...(CanilBD)"); 
             System.out.println(e);
         }
-
+    }
+    
+    public Canil consultarCanil(String cnpj){
+        return null; // retorna o canil encontrado
     }
 }

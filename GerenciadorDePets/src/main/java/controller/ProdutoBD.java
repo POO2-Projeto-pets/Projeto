@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Produto;
 /**
  *
  * @author LucasTheobaldo
@@ -22,7 +23,7 @@ public class ProdutoBD {
 
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Produto ("
-             + "id int primary key,"
+            + "id int primary key,"
             + "nome text,"
             + "preco float"
             + ")";
@@ -73,4 +74,8 @@ public class ProdutoBD {
             System.out.println(e);
         }
     }    
+    
+    public Produto consultarProduto(int id){
+        return null;
+    }
 }

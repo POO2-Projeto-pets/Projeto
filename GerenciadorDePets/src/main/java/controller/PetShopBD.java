@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.PetShop;
 /**
  *
  * @author LucasTheobaldo
@@ -52,6 +53,10 @@ public class PetShopBD {
             System.out.println("\nErro ao criar a PK de PetShop...(PetShopBD)"); 
             System.out.println(e);
         }
-
     }    
+    
+    public PetShop consultarPetShop(int id){
+        return null;
+    }
+
 }

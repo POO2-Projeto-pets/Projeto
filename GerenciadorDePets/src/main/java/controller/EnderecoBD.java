@@ -60,12 +60,5 @@ public class EnderecoBD {
             System.out.println("Erro ao criar relacão usuario_endereco..."); 
             System.out.println(e);
         }
-       
-                 
-       
     }
-    
-   
-    
-    
 }

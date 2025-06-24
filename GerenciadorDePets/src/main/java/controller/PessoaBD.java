@@ -15,7 +15,7 @@ import model.Pessoa;
  * @author LucasTheobaldo
  */
 public class PessoaBD {
-     static Connection con = null;
+    static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
     static String user = "postgres";
@@ -43,25 +43,29 @@ public class PessoaBD {
     
     PreparedStatement ps = null;
         
-        public void inserir(Pessoa pessoa){
-            String sql1 = "INSERT INTO Pessoa VALUES(?,?,?,?,?)";
-            try{//inserção de dados
-                Class.forName(driver);
-                con = DriverManager.getConnection(url,user,senha);
-                System.out.println("Inserindo dados de Pessoa...");
-                ps = con.prepareStatement(sql1);
-                ps.setInt(1, pessoa.getId());
-                ps.setString(2, pessoa.getNome());
-                ps.setString(3, pessoa.getEmail());
-                ps.setString(4, pessoa.getSenha());
-                ps.setString(5, pessoa.getCpf());
-                ps.execute();
-                System.out.println("Dados inseridos com sucesso!");
-                
-                ps.close();
-                con.close();
-            }catch(ClassNotFoundException | SQLException e){
-                System.out.println(e);
-            }
+    public void inserir(Pessoa pessoa){
+        String sql1 = "INSERT INTO Pessoa VALUES(?,?,?,?,?)";
+        try{//inserção de dados
+            Class.forName(driver);
+            con = DriverManager.getConnection(url,user,senha);
+            System.out.println("Inserindo dados de Pessoa...");
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, pessoa.getId());
+            ps.setString(2, pessoa.getNome());
+            ps.setString(3, pessoa.getEmail());
+            ps.setString(4, pessoa.getSenha());
+            ps.setString(5, pessoa.getCpf());
+            ps.execute();
+            System.out.println("Dados inseridos com sucesso!");
+
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println(e);
         }
+    }
+    
+    public Pessoa consultarPessoa(int id){
+        return null;
+    }
 }

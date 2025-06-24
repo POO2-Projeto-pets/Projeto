@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Clinica;
 
 /**
  *
@@ -53,6 +54,9 @@ public class ClinicaBD {
             System.out.println("\nErro ao criar a PK de Clinica...(ClinicaBD)"); 
             System.out.println(e);
         }
-        
+    }
+
+    public Clinica consultarClinica(String cnpj){
+       return null;
     }
 }

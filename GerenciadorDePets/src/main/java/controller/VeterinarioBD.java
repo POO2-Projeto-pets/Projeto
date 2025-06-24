@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import model.Veterinario;
 
 /**
  *
@@ -72,6 +73,10 @@ public class VeterinarioBD {
             System.out.println("\nErro ao criar relacão clinica_veterinario...(VeterinarioDB)");
             System.out.println(e);
         }
-
     }
+    
+    public Veterinario consultarVeterinario(int id){
+        return null;
+    }
+    
 }
