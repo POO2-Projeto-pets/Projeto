@@ -68,4 +68,8 @@ public class PessoaBD {
     public Pessoa consultarPessoa(int id){
         return null;
     }
+    
+    public void atualizarPessoa(Pessoa pessoa){
+        
+    }
 }

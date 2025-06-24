@@ -78,4 +78,8 @@ public class ProdutoBD {
     public Produto consultarProduto(int id){
         return null;
     }
+    
+    public void atualizarProduto(Produto produto){
+        
+    }
 }

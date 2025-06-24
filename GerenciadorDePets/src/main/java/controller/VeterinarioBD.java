@@ -79,4 +79,7 @@ public class VeterinarioBD {
         return null;
     }
     
+    public void atualizarVeterinario(Veterinario veterinario){
+    
+    }
 }

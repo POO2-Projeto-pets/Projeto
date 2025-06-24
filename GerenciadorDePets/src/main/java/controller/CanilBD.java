@@ -58,4 +58,8 @@ public class CanilBD {
     public Canil consultarCanil(String cnpj){
         return null; // retorna o canil encontrado
     }
+    
+    public void atualizarCanil(Canil canil){
+        
+    }
 }

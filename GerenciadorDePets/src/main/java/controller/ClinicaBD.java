@@ -59,4 +59,8 @@ public class ClinicaBD {
     public Clinica consultarClinica(String cnpj){
        return null;
     }
+    
+    public void atualizarClinica(Clinica clinica){
+        
+    }
 }

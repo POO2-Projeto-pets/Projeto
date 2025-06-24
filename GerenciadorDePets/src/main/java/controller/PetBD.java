@@ -111,4 +111,8 @@ public class PetBD {
     public Pet consultarPet(int id){
         return null;
     }
+    
+    public void atualizarPet(Pet pet){
+        
+    }
 }

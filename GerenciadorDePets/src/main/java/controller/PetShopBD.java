@@ -59,4 +59,7 @@ public class PetShopBD {
         return null;
     }
 
+    public void atualizarPetShop(PetShop petShop){
+    
+    }
 }
