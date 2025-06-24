@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author bone_dust
+ * @author bone_dust // teste
  */
 public class PessoaBD {
      static Connection con = null;
