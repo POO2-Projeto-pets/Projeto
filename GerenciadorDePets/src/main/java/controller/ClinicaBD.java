@@ -61,6 +61,7 @@ public class ClinicaBD {
     }
     
     public void atualizarClinica(Clinica clinica){
-        
+        // Não pode mudar ID
+        // Não pode mudar CNPJ
     }
 }

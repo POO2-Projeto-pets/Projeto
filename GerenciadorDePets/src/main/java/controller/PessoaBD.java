@@ -70,6 +70,8 @@ public class PessoaBD {
     }
     
     public void atualizarPessoa(Pessoa pessoa){
-        
+        // Não pode mudar ID
+        // Não pode mudar CPF
     }
+   
 }

@@ -113,6 +113,6 @@ public class PetBD {
     }
     
     public void atualizarPet(Pet pet){
-        
+        // Pode mudar: foto, corPredominante, nome, habilidades e dadosClinicos
     }
 }

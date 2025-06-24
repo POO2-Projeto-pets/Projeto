@@ -80,6 +80,7 @@ public class VeterinarioBD {
     }
     
     public void atualizarVeterinario(Veterinario veterinario){
-    
+        // Não pode mudar ID
+        // Não pode mudar CNPJ
     }
 }

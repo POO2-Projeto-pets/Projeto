@@ -60,6 +60,7 @@ public class PetShopBD {
     }
 
     public void atualizarPetShop(PetShop petShop){
-    
+        // Não pode mudar ID
+        // Não pode mudar CNPJ
     }
 }

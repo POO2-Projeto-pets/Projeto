@@ -60,6 +60,7 @@ public class CanilBD {
     }
     
     public void atualizarCanil(Canil canil){
-        
+        // Não pode mudar ID
+        // Não pode mudar CNPJ
     }
 }

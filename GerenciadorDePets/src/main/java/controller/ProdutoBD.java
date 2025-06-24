@@ -80,6 +80,6 @@ public class ProdutoBD {
     }
     
     public void atualizarProduto(Produto produto){
-        
+        // Não pode mudar ID
     }
 }

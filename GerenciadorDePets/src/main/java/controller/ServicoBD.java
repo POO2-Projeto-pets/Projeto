@@ -35,6 +35,5 @@ public class ServicoBD {
             System.out.println("Erro ao criar a tabela Servico...");  
             System.out.println(e);
         }
-
     }
 }
