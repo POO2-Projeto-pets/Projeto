@@ -18,11 +18,13 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.6</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>group.id</groupId>
             <artifactId>artifact.id</artifactId>
             <version>1.0</version>
         </dependency>
+        -->
     </dependencies>
 </project>
 
