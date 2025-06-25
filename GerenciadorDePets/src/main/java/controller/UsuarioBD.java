@@ -23,7 +23,7 @@ public class UsuarioBD {
         
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Usuario ("
-            + "uid int not null primary key,"
+            + "uid SERIAL primary key,"
             + "nome text,"
             + "email text,"
             + "senha text"
