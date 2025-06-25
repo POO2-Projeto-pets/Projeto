@@ -16,6 +16,23 @@ import model.Endereco;
  */
 
 public class EnderecoBD {
+    
+    //Singleton
+    private static EnderecoBD gerEnderecoBD;
+
+    private EnderecoBD(){
+        
+    }
+    
+    public static EnderecoBD Gen(){
+        if(gerEnderecoBD == null){
+            gerEnderecoBD = new EnderecoBD();
+        }
+        return gerEnderecoBD;
+    }
+    //Singleton
+    
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -34,7 +51,7 @@ public class EnderecoBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
             st.close();
@@ -52,7 +69,7 @@ public class EnderecoBD {
         
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();

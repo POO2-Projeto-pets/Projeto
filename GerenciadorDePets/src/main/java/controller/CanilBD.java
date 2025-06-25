@@ -13,11 +13,24 @@ import model.Canil;
  * @author LucasTheobaldo
  */
 public class CanilBD {
+    
+    //Singleton
+    private static CanilBD gerCanilBD;
+
+    private CanilBD(){}
+    
+    public static CanilBD Gen(){
+        if(gerCanilBD == null){
+            gerCanilBD = new CanilBD();
+        }
+        return gerCanilBD;
+    }
+    //Singleton
+    
+    
+    
     static Connection con = null;
-    static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
-    static String user = "postgres";
-    static String senha = "utfpr";
     
     Statement st = null;
         
@@ -27,7 +40,7 @@ public class CanilBD {
             + ")INHERITS (Servico)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);            
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -44,7 +57,7 @@ public class CanilBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();

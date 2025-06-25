@@ -4,7 +4,6 @@
  */
 package controller;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Veterinario;
@@ -14,6 +13,22 @@ import model.Veterinario;
  * @author LucasTheobaldo
  */
 public class VeterinarioBD {
+    
+    //Singleton
+    private static VeterinarioBD gerVeterinarioBD;
+
+    private VeterinarioBD(){
+        
+    }
+    
+    public static VeterinarioBD Gen(){
+        if(gerVeterinarioBD == null){
+            gerVeterinarioBD = new VeterinarioBD();
+        }
+        return gerVeterinarioBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -29,7 +44,7 @@ public class VeterinarioBD {
             + ")INHERITS (Servico)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -46,7 +61,7 @@ public class VeterinarioBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();  
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
@@ -64,7 +79,7 @@ public class VeterinarioBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();

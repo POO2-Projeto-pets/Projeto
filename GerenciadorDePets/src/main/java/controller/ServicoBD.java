@@ -12,6 +12,22 @@ import java.sql.Statement;
  * @author LucasTheobaldo
  */
 public class ServicoBD {
+    
+    //Singleton
+    private static ServicoBD gerServicoBD;
+
+    private ServicoBD(){
+        
+    }
+    
+    public static ServicoBD Gen(){
+        if(gerServicoBD == null){
+            gerServicoBD = new ServicoBD();
+        }
+        return gerServicoBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -26,7 +42,7 @@ public class ServicoBD {
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
             st.close();
@@ -44,7 +60,7 @@ public class ServicoBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();

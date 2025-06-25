@@ -13,6 +13,22 @@ import java.sql.Statement;
  * @author LucasTheobaldo
  */
 public class UsuarioBD {
+    
+    //Singleton
+    private static UsuarioBD gerUsuarioBD;
+
+    private UsuarioBD(){
+        
+    }
+    
+    public static UsuarioBD Gen(){
+        if(gerUsuarioBD == null){
+            gerUsuarioBD = new UsuarioBD();
+        }
+        return gerUsuarioBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -30,7 +46,7 @@ public class UsuarioBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();  
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();

@@ -14,6 +14,22 @@ import model.Clinica;
  * @author LucasTheobaldo
  */
 public class ClinicaBD {
+    
+    //Singleton
+    private static ClinicaBD gerClinicaBD;
+
+    private ClinicaBD(){
+        
+    }
+    
+    public static ClinicaBD Gen(){
+        if(gerClinicaBD == null){
+            gerClinicaBD = new ClinicaBD();
+        }
+        return gerClinicaBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -28,7 +44,7 @@ public class ClinicaBD {
             + ")INHERITS (Servico)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -45,7 +61,7 @@ public class ClinicaBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();

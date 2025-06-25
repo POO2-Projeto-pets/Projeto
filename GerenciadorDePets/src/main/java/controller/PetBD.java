@@ -14,6 +14,22 @@ import model.Pet;
  */
 
 public class PetBD {
+    
+    //Singleton
+    private static PetBD gerPetBD;
+
+    private PetBD(){
+        
+    }
+    
+    public static PetBD Gen(){
+        if(gerPetBD == null){
+            gerPetBD = new PetBD();
+        }
+        return gerPetBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -35,7 +51,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlenum);
             st.close();
@@ -61,7 +77,7 @@ public class PetBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
             st.close();
@@ -79,7 +95,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();   
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
@@ -97,7 +113,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();

@@ -15,6 +15,22 @@ import model.Pessoa;
  * @author LucasTheobaldo
  */
 public class PessoaBD {
+    
+    //Singleton
+    private static PessoaBD gerPessoaBD;
+
+    private PessoaBD(){
+        
+    }
+    
+    public static PessoaBD Gen(){
+        if(gerPessoaBD == null){
+            gerPessoaBD = new PessoaBD();
+        }
+        return gerPessoaBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -29,7 +45,7 @@ public class PessoaBD {
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -46,7 +62,7 @@ public class PessoaBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();
@@ -64,7 +80,7 @@ public class PessoaBD {
         String sql1 = "INSERT INTO Pessoa VALUES(DEFAULT,?,?,?,?)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
+            con = Conexao.getCon();
             System.out.println("Inserindo dados de Pessoa...");
             ps = con.prepareStatement(sql1);
             ps.setString(1, pessoa.getNome());

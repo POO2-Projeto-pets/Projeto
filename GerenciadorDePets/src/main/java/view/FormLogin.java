@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class FormLogin extends javax.swing.JFrame {
 
+    //Singleton
     private static FormLogin gerFormLogin;
     
     public FormLogin() {
@@ -19,12 +21,13 @@ public class FormLogin extends javax.swing.JFrame {
         menuAdmin.setVisible(false);
     }
 
-    public static FormLogin GenFormLogin(){ //3º passo
+    public static FormLogin Gen(){
         if(gerFormLogin == null){
             gerFormLogin = new FormLogin();
         }
         return gerFormLogin;
     }
+    //Singleton
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +41,7 @@ public class FormLogin extends javax.swing.JFrame {
         txtfieldEmail = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
-        txtfieldPassword = new javax.swing.JPasswordField();
+        txtfieldSenha = new javax.swing.JPasswordField();
         tbutShowPassword = new javax.swing.JToggleButton();
         btnCadastro = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
@@ -47,11 +50,12 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblbduser = new javax.swing.JLabel();
         lblbdsenha = new javax.swing.JLabel();
-        txtfieldbdsenha = new javax.swing.JTextField();
-        txtfieldbduser = new javax.swing.JTextField();
-        btbresetbdinfo = new javax.swing.JButton();
-        txtfieldbdurl = new javax.swing.JTextField();
+        txtfieldBdSenha = new javax.swing.JTextField();
+        txtfieldBdUser = new javax.swing.JTextField();
+        btbTesteConexao = new javax.swing.JButton();
+        txtfieldBdUrl = new javax.swing.JTextField();
         lblbdurl = new javax.swing.JLabel();
+        btbResetInfo = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
 
@@ -79,10 +83,10 @@ public class FormLogin extends javax.swing.JFrame {
         lblEmail.setToolTipText("");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtfieldPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldPasswordActionPerformed(evt);
+                txtfieldSenhaActionPerformed(evt);
             }
         });
 
@@ -138,40 +142,48 @@ public class FormLogin extends javax.swing.JFrame {
         lblbdsenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblbdsenha.setText("Senha:");
 
-        txtfieldbdsenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtfieldbdsenha.setText("utfpr");
-        txtfieldbdsenha.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldBdSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldBdSenha.setText("utfpr");
+        txtfieldBdSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldbdsenhaActionPerformed(evt);
+                txtfieldBdSenhaActionPerformed(evt);
             }
         });
 
-        txtfieldbduser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtfieldbduser.setText("postgres");
-        txtfieldbduser.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldBdUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldBdUser.setText("postgres");
+        txtfieldBdUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldbduserActionPerformed(evt);
+                txtfieldBdUserActionPerformed(evt);
             }
         });
 
-        btbresetbdinfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btbresetbdinfo.setText("Reset Default");
-        btbresetbdinfo.addActionListener(new java.awt.event.ActionListener() {
+        btbTesteConexao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btbTesteConexao.setText("Teste de Conexão");
+        btbTesteConexao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btbresetbdinfoActionPerformed(evt);
+                btbTesteConexaoActionPerformed(evt);
             }
         });
 
-        txtfieldbdurl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtfieldbdurl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
-        txtfieldbdurl.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldBdUrl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtfieldBdUrl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
+        txtfieldBdUrl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldbdurlActionPerformed(evt);
+                txtfieldBdUrlActionPerformed(evt);
             }
         });
 
         lblbdurl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblbdurl.setText("URL:");
+
+        btbResetInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btbResetInfo.setText("Reset Default");
+        btbResetInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbResetInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuAdminLayout = new javax.swing.GroupLayout(menuAdmin);
         menuAdmin.setLayout(menuAdminLayout);
@@ -180,7 +192,9 @@ public class FormLogin extends javax.swing.JFrame {
             .addGroup(menuAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addGroup(menuAdminLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(menuAdminLayout.createSequentialGroup()
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblbdsenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,12 +202,14 @@ public class FormLogin extends javax.swing.JFrame {
                             .addComponent(lblbdurl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtfieldbduser)
-                            .addComponent(txtfieldbdsenha)
-                            .addComponent(txtfieldbdurl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btbresetbdinfo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtfieldBdUser)
+                            .addComponent(txtfieldBdSenha)
+                            .addComponent(txtfieldBdUrl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btbTesteConexao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btbResetInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         menuAdminLayout.setVerticalGroup(
             menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,24 +217,27 @@ public class FormLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(menuAdminLayout.createSequentialGroup()
-                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblbduser)
-                            .addComponent(txtfieldbduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtfieldBdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblbdurl)
-                            .addComponent(txtfieldbdurl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtfieldBdUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(menuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblbdsenha)
-                            .addComponent(txtfieldbdsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btbresetbdinfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtfieldBdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(menuAdminLayout.createSequentialGroup()
+                        .addComponent(btbResetInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btbTesteConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sources/logo.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon("E:\\OneDrive - alunos.utfpr.edu.br\\1. UTFPR\\Engenharia de Software\\4 - Semestre\\Programação Orientada a Objetos 2\\Trabalho Final 2\\Projeto\\GerenciadorDePets\\src\\main\\java\\sources\\logo.png")); // NOI18N
 
         btnExit.setBackground(new java.awt.Color(255, 153, 153));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -240,7 +259,7 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(menuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtfieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtfieldPassword)
+                        .addComponent(txtfieldSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tbutShowPassword))
                     .addGroup(layout.createSequentialGroup()
@@ -275,7 +294,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tbutShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtfieldPassword))
+                    .addComponent(txtfieldSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,22 +315,64 @@ public class FormLogin extends javax.swing.JFrame {
 
     
     
-    private void txtfieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldPasswordActionPerformed
+    private void txtfieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldPasswordActionPerformed
+    }//GEN-LAST:event_txtfieldSenhaActionPerformed
 
     private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
         ShowPassword();
     }//GEN-LAST:event_tbutShowPasswordActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        // TODO add your handling code here:
+        cadastrar();
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
+        entrar();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
+    private void cadastrar(){
+        if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
+            if(true){
+                FormCadastro.Gen().setVisible(true);
+                lock(true);
+            }
+        }
+        else{
+            if(admCheckbox.isSelected()){
+                JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados, verifique os parametros em Habilitar Menu de Conexão", "Erro", JOptionPane.ERROR_MESSAGE);
+                admCheckbox.setSelected(true);
+                CheckboxAdmVisibily();
+                
+            }
+        }
+    }
+    
+    
+    private void entrar(){
+        if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
+            if(true){
+                
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void lock(boolean state){
+        state = !state;
+        txtfieldBdUser.setEnabled(state);
+        txtfieldBdUrl.setEnabled(state);
+        txtfieldBdSenha.setEnabled(state);
+        txtfieldEmail.setEnabled(state);
+        txtfieldSenha.setEnabled(state);
+    }
+    
+    
     private void admCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCheckboxActionPerformed
         CheckboxAdmVisibily();
     }//GEN-LAST:event_admCheckboxActionPerformed
@@ -323,34 +384,64 @@ public class FormLogin extends javax.swing.JFrame {
         else{
             menuAdmin.setVisible(true);
         }
-        
     }
     
-    private void btbresetbdinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbresetbdinfoActionPerformed
-        resetbdinfo();
-    }//GEN-LAST:event_btbresetbdinfoActionPerformed
+    
+    
+    
+    private void btbTesteConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbTesteConexaoActionPerformed
+        testeConexao();
+    }//GEN-LAST:event_btbTesteConexaoActionPerformed
 
+    private void testeConexao(){
+        if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
+            JOptionPane.showMessageDialog(null, "Conectado com Sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            CreateBD.Gen();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     private void resetbdinfo(){
-        txtfieldbduser.setText("postgres");
-        txtfieldbdurl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
-        txtfieldbdsenha.setText("utfpr");
+        txtfieldBdUser.setText("postgres");
+        txtfieldBdUrl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
+        txtfieldBdSenha.setText("utfpr");
     }
     
-    private void txtfieldbdurlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbdurlActionPerformed
+    public String getBdUrl(){
+        return txtfieldBdUrl.getText();
+    }
+    public String getBdUser(){
+        return txtfieldBdUser.getText();
+    }
+    public String getBdSenha(){
+        return txtfieldBdSenha.getText();
+    }
+            
+            
+    
+    
+    
+    private void txtfieldBdUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldBdUrlActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldbdurlActionPerformed
+    }//GEN-LAST:event_txtfieldBdUrlActionPerformed
 
-    private void txtfieldbdsenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbdsenhaActionPerformed
+    private void txtfieldBdSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldBdSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldbdsenhaActionPerformed
+    }//GEN-LAST:event_txtfieldBdSenhaActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         sair();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void txtfieldbduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldbduserActionPerformed
+    private void txtfieldBdUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldBdUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldbduserActionPerformed
+    }//GEN-LAST:event_txtfieldBdUserActionPerformed
+
+    private void btbResetInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbResetInfoActionPerformed
+        resetbdinfo();
+    }//GEN-LAST:event_btbResetInfoActionPerformed
 
     public void sair(){
         if(JOptionPane.showConfirmDialog(null,"Deseja realmente sair?","Confirmação de Saída",JOptionPane.YES_NO_OPTION) == 0){
@@ -360,10 +451,10 @@ public class FormLogin extends javax.swing.JFrame {
     
     private void ShowPassword(){
         if(tbutShowPassword.isSelected()){
-            txtfieldPassword.setEchoChar((char) 0);
+            txtfieldSenha.setEchoChar((char) 0);
         }
         else{
-            txtfieldPassword.setEchoChar('*');
+            txtfieldSenha.setEchoChar('*');
         }
     }
     
@@ -404,7 +495,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox admCheckbox;
-    private javax.swing.JButton btbresetbdinfo;
+    private javax.swing.JButton btbResetInfo;
+    private javax.swing.JButton btbTesteConexao;
     private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnExit;
@@ -417,10 +509,10 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblbduser;
     private javax.swing.JPanel menuAdmin;
     private javax.swing.JToggleButton tbutShowPassword;
+    private javax.swing.JTextField txtfieldBdSenha;
+    private javax.swing.JTextField txtfieldBdUrl;
+    private javax.swing.JTextField txtfieldBdUser;
     private javax.swing.JTextField txtfieldEmail;
-    private javax.swing.JPasswordField txtfieldPassword;
-    private javax.swing.JTextField txtfieldbdsenha;
-    private javax.swing.JTextField txtfieldbdurl;
-    private javax.swing.JTextField txtfieldbduser;
+    private javax.swing.JPasswordField txtfieldSenha;
     // End of variables declaration//GEN-END:variables
 }

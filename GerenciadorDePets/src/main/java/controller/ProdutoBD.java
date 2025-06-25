@@ -13,6 +13,22 @@ import model.Produto;
  * @author LucasTheobaldo
  */
 public class ProdutoBD {
+    
+    //Singleton
+    private static ProdutoBD gerProdutoBD;
+
+    private ProdutoBD(){
+        
+    }
+    
+    public static ProdutoBD Gen(){
+        if(gerProdutoBD == null){
+            gerProdutoBD = new ProdutoBD();
+        }
+        return gerProdutoBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
@@ -29,7 +45,7 @@ public class ProdutoBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -46,7 +62,7 @@ public class ProdutoBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();  
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
@@ -64,7 +80,7 @@ public class ProdutoBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
