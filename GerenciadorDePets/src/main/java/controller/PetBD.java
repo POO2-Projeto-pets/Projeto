@@ -51,7 +51,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlenum);
             st.close();
@@ -77,7 +77,7 @@ public class PetBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
             st.close();
@@ -95,7 +95,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();   
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
@@ -113,7 +113,7 @@ public class PetBD {
                 
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();

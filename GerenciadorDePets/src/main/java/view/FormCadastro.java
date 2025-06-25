@@ -19,10 +19,12 @@ public class FormCadastro extends javax.swing.JFrame {
 
     private FormCadastro() {
         initComponents();
-        IDWarning.setVisible(false);
+        lblIDWarning.setVisible(false);
+        lblPasswordWarning.setVisible(false);
+        lblPasswordAgainWarning.setVisible(false);
     }
     
-    public static FormCadastro GenFormCadastro(){
+    public static FormCadastro Gen(){
         if(gerFormCadastro == null){
             gerFormCadastro = new FormCadastro();
         }
@@ -64,7 +66,9 @@ public class FormCadastro extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         warningsenha = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        IDWarning = new javax.swing.JLabel();
+        lblIDWarning = new javax.swing.JLabel();
+        lblPasswordWarning = new javax.swing.JLabel();
+        lblPasswordAgainWarning = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -86,6 +90,11 @@ public class FormCadastro extends javax.swing.JFrame {
         lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfieldSenhaFocusLost(evt);
+            }
+        });
         txtfieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfieldSenhaActionPerformed(evt);
@@ -161,6 +170,11 @@ public class FormCadastro extends javax.swing.JFrame {
         });
 
         txtfieldSenhaAgain.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenhaAgain.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfieldSenhaAgainFocusLost(evt);
+            }
+        });
         txtfieldSenhaAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfieldSenhaAgainActionPerformed(evt);
@@ -220,9 +234,17 @@ public class FormCadastro extends javax.swing.JFrame {
         jTextArea1.setEnabled(false);
         warningsenha.setViewportView(jTextArea1);
 
-        IDWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        IDWarning.setForeground(new java.awt.Color(0, 153, 0));
-        IDWarning.setText("CNPJ/CPF Incorreto!");
+        lblIDWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblIDWarning.setForeground(new java.awt.Color(0, 153, 0));
+        lblIDWarning.setText("warning");
+
+        lblPasswordWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPasswordWarning.setForeground(new java.awt.Color(0, 153, 0));
+        lblPasswordWarning.setText("warning2");
+
+        lblPasswordAgainWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPasswordAgainWarning.setForeground(new java.awt.Color(0, 153, 0));
+        lblPasswordAgainWarning.setText("warning3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,15 +262,6 @@ public class FormCadastro extends javax.swing.JFrame {
                                 .addComponent(btnCadastro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCadastro1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtfieldSenhaAgain, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lblSenha)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtfieldSenha))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tbutShowPassword))
                             .addComponent(txtfieldCidade)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,17 +278,30 @@ public class FormCadastro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblNome)
-                                    .addComponent(lblSenha2)
                                     .addComponent(lblCidade)
                                     .addComponent(lblEndereco)
                                     .addComponent(lblEmail)
                                     .addComponent(warningsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblSenha2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblPasswordAgainWarning))
+                                    .addComponent(txtfieldSenhaAgain, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(lblSenha)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblPasswordWarning))
+                                    .addComponent(txtfieldSenha))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tbutShowPassword)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(IDWarning)
+                        .addComponent(lblIDWarning)
                         .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
@@ -292,17 +318,21 @@ public class FormCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
-                    .addComponent(IDWarning))
+                    .addComponent(lblIDWarning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtfieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSenha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(lblPasswordWarning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tbutShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtfieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSenha2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha2)
+                    .addComponent(lblPasswordAgainWarning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtfieldSenhaAgain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -350,8 +380,8 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastroActionPerformed
         
     private void cancelar(){
-        GenFormCadastro().dispose();
-        FormLogin.GenFormLogin().lock(false);
+        Gen().dispose();
+        FormLogin.Gen().lock(false);
     }
     
     private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
@@ -388,38 +418,38 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfieldSenhaAgainActionPerformed
 
     private void warning(){
-            IDWarning.setForeground(Color.getHSBColor(120, 1f, 0.3f));
-            IDWarning.setVisible(false);
+            lblIDWarning.setForeground(Color.getHSBColor(120, 1f, 0.3f));
+            lblIDWarning.setVisible(false);
             if(validarCpf(txtfieldID.getText()) == true){
-                IDWarning.setVisible(true);
-                IDWarning.setText("CPF Valido");
+                lblIDWarning.setVisible(true);
+                lblIDWarning.setText("CPF Valido");
             }
             else if(validarCnpj(txtfieldID.getText()) == true){
-                IDWarning.setVisible(true);
-                IDWarning.setText("CNPJ Valido");
+                lblIDWarning.setVisible(true);
+                lblIDWarning.setText("CNPJ Valido");
             }
             else{
-                IDWarning.setForeground(Color.red);
+                lblIDWarning.setForeground(Color.red);
                 if(txtfieldID.getText().isEmpty()){
-                    IDWarning.setText("Necessário um CPF ou CNPJ");
-                    IDWarning.setVisible(true);
+                    lblIDWarning.setText("Necessário um CPF ou CNPJ");
+                    lblIDWarning.setVisible(true);
                 }
                 else if(txtfieldID.getText().length() == 14){
-                    IDWarning.setText("CNPJ inválido");
-                    IDWarning.setVisible(true);
+                    lblIDWarning.setText("CNPJ inválido");
+                    lblIDWarning.setVisible(true);
                 }
                 else if(txtfieldID.getText().length() == 11){
-                    IDWarning.setText("CPF inválido");
-                    IDWarning.setVisible(true);
+                    lblIDWarning.setText("CPF inválido");
+                    lblIDWarning.setVisible(true);
                 }
                 else{
                     if(txtfieldID.getText().length()<14){
-                        IDWarning.setText("CNPJ inválido");
-                        IDWarning.setVisible(true);
+                        lblIDWarning.setText("CNPJ inválido");
+                        lblIDWarning.setVisible(true);
                     }
                     if(txtfieldID.getText().length()<11){
-                        IDWarning.setText("CPF inválido");
-                        IDWarning.setVisible(true);
+                        lblIDWarning.setText("CPF inválido");
+                        lblIDWarning.setVisible(true);
                     }
                 }
             }
@@ -442,6 +472,43 @@ public class FormCadastro extends javax.swing.JFrame {
         warning();
     }//GEN-LAST:event_txtfieldIDFocusLost
 
+    private void txtfieldSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfieldSenhaFocusLost
+        verificaSenha();
+    }//GEN-LAST:event_txtfieldSenhaFocusLost
+
+    private void txtfieldSenhaAgainFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfieldSenhaAgainFocusLost
+        verificaSemelhanca();
+    }//GEN-LAST:event_txtfieldSenhaAgainFocusLost
+
+    private void verificaSenha(){
+        if(txtfieldSenha.getPassword().length >= 8 && txtfieldSenha.getPassword().length <= 16){
+            lblPasswordWarning.setVisible(true);
+            lblPasswordWarning.setForeground(Color.green);
+            lblPasswordWarning.setText("Aceita");
+        }
+        else{
+            lblPasswordWarning.setVisible(true);
+            lblPasswordWarning.setForeground(Color.red);
+            lblPasswordWarning.setText("Senha fora dos padrões");
+        }
+    }
+    
+    private void verificaSemelhanca(){
+        System.out.println(String.copyValueOf(txtfieldSenha.getPassword())+"|"+String.copyValueOf(txtfieldSenhaAgain.getPassword()));
+        if(String.copyValueOf(txtfieldSenha.getPassword()).equalsIgnoreCase(String.copyValueOf(txtfieldSenhaAgain.getPassword()))){
+            lblPasswordAgainWarning.setVisible(true);
+            lblPasswordAgainWarning.setForeground(Color.green);
+            lblPasswordAgainWarning.setText("Senhas iguais");
+        }
+        else{
+            lblPasswordAgainWarning.setVisible(true);
+            lblPasswordAgainWarning.setForeground(Color.red);
+            lblPasswordAgainWarning.setText("Senha não é igual");
+        }
+    }
+    
+    
+    
     public boolean validarCpf(String cpf) {
         if (cpf.equals("00000000000") || cpf.equals("11111111111") ||
             cpf.equals("22222222222") || cpf.equals("33333333333") ||
@@ -565,7 +632,6 @@ public class FormCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IDWarning;
     private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnCadastro1;
     private javax.swing.JComboBox<String> combboxEstado;
@@ -578,7 +644,10 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lblEndereco;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblIDWarning;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblPasswordAgainWarning;
+    private javax.swing.JLabel lblPasswordWarning;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblSenha2;
     private javax.swing.JToggleButton tbutShowPassword;

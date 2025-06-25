@@ -42,7 +42,7 @@ public class ServicoBD {
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlCreate);
             st.close();
@@ -60,7 +60,7 @@ public class ServicoBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();

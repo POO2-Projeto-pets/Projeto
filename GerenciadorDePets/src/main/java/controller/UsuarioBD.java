@@ -46,7 +46,7 @@ public class UsuarioBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();  
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();

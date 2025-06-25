@@ -45,7 +45,7 @@ public class PessoaBD {
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon(); 
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -62,7 +62,7 @@ public class PessoaBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha); 
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlPkey);
             st.close();
@@ -80,7 +80,7 @@ public class PessoaBD {
         String sql1 = "INSERT INTO Pessoa VALUES(?,?,?,?,?)";
         try{//inserção de dados
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
+            con = Conexao.getCon();
             System.out.println("Inserindo dados de Pessoa...");
             ps = con.prepareStatement(sql1);
             ps.setInt(1, pessoa.getId());

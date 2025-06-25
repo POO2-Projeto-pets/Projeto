@@ -4,7 +4,6 @@
  */
 package controller;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Veterinario;
@@ -45,7 +44,7 @@ public class VeterinarioBD {
             + ")INHERITS (Servico)";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);   
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sql1);
             st.close();
@@ -62,7 +61,7 @@ public class VeterinarioBD {
             + ")";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();  
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();
@@ -80,7 +79,7 @@ public class VeterinarioBD {
             +"END $$";
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);  
+            con = Conexao.getCon();
             st = con.createStatement();
             st.executeUpdate(sqlRel);
             st.close();

@@ -21,7 +21,7 @@ public class FormLogin extends javax.swing.JFrame {
         menuAdmin.setVisible(false);
     }
 
-    public static FormLogin GenFormLogin(){
+    public static FormLogin Gen(){
         if(gerFormLogin == null){
             gerFormLogin = new FormLogin();
         }
@@ -334,7 +334,7 @@ public class FormLogin extends javax.swing.JFrame {
     private void cadastrar(){
         if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
             if(true){
-                FormCadastro.GenFormCadastro().setVisible(true);
+                FormCadastro.Gen().setVisible(true);
                 lock(true);
             }
         }
@@ -384,7 +384,6 @@ public class FormLogin extends javax.swing.JFrame {
         else{
             menuAdmin.setVisible(true);
         }
-        
     }
     
     
@@ -397,6 +396,7 @@ public class FormLogin extends javax.swing.JFrame {
     private void testeConexao(){
         if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
             JOptionPane.showMessageDialog(null, "Conectado com Sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            CreateBD.Gen();
         }
         else{
             JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -408,6 +408,20 @@ public class FormLogin extends javax.swing.JFrame {
         txtfieldBdUrl.setText("jdbc:postgresql://localhost:5432/Principal_BD");
         txtfieldBdSenha.setText("utfpr");
     }
+    
+    public String getBdUrl(){
+        return txtfieldBdUrl.getText();
+    }
+    public String getBdUser(){
+        return txtfieldBdUser.getText();
+    }
+    public String getBdSenha(){
+        return txtfieldBdSenha.getText();
+    }
+            
+            
+    
+    
     
     private void txtfieldBdUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldBdUrlActionPerformed
         // TODO add your handling code here:

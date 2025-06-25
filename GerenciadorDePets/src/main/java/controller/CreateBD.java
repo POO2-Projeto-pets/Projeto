@@ -9,6 +9,7 @@ package controller;
  * @author leonc
  */
 public class CreateBD {
+    
     //Singleton
     private static CreateBD gerCreateBD;
 
@@ -16,15 +17,16 @@ public class CreateBD {
         
     }
     
-    public CreateBD Gen(){
+    public static CreateBD Gen(){
         if(gerCreateBD == null){
             gerCreateBD = new CreateBD();
             restauraBD();
         }
         return gerCreateBD;
     }
+    //Singleton
     
-    public void restauraBD(){
+    public static void restauraBD(){
         UsuarioBD.Gen().criaTable();
         EnderecoBD.Gen().criaTable();
         PessoaBD.Gen().criaTable();
@@ -36,6 +38,4 @@ public class CreateBD {
         ClinicaBD.Gen().criaTable();
         VeterinarioBD.Gen().criaTable();
     }
-    
-    //Singleton
 }

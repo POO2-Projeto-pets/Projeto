@@ -13,6 +13,6 @@ import view.*;
 public class GerenciadorDePets {
 
     public static void main(String[] args) {
-        FormLogin.GenFormLogin().setVisible(true);
+        FormLogin.Gen().setVisible(true);
     }
 }

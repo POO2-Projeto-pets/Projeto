@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import view.*;
+import java.sql.*;
 
 /**
  *
@@ -20,8 +18,18 @@ public class Conexao {
             Connection con = DriverManager.getConnection(url,user,senha);
             con.close();
             return true;
-        }catch(ClassNotFoundException | SQLException e){
+        } catch(ClassNotFoundException | SQLException e) {
             return false;
+        }
+    }
+    public static Connection getCon(){
+        try {
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(FormLogin.Gen().getBdUrl(),FormLogin.Gen().getBdUser(),FormLogin.Gen().getBdSenha());
+            return con;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
+            return getCon();
         }
     }
 }
