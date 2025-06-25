@@ -22,7 +22,7 @@ public class ServicoBD {
         
     public void criaTable() {
         String sqlCreate = "CREATE TABLE IF NOT EXISTS Servico ("
-            + "cnpj int"
+            + "cnpj text unique"
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
