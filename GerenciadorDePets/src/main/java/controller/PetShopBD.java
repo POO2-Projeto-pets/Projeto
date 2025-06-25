@@ -13,6 +13,22 @@ import model.PetShop;
  * @author LucasTheobaldo
  */
 public class PetShopBD {
+    
+    //Singleton
+    private static PetShopBD gerPetShopBD;
+
+    private PetShopBD(){
+        
+    }
+    
+    public static PetShopBD Gen(){
+        if(gerPetShopBD == null){
+            gerPetShopBD = new PetShopBD();
+        }
+        return gerPetShopBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

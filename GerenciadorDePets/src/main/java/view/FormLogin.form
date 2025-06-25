@@ -42,7 +42,7 @@
                   <Component id="menuAdmin" max="32767" attributes="0"/>
                   <Component id="txtfieldEmail" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="txtfieldPassword" max="32767" attributes="0"/>
+                      <Component id="txtfieldSenha" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tbutShowPassword" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -86,7 +86,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="tbutShowPassword" max="32767" attributes="0"/>
-                  <Component id="txtfieldPassword" max="32767" attributes="0"/>
+                  <Component id="txtfieldSenha" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -133,14 +133,14 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="txtfieldPassword">
+    <Component class="javax.swing.JPasswordField" name="txtfieldSenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldPasswordActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldSenhaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="tbutShowPassword">
@@ -223,7 +223,10 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="lblbdsenha" max="32767" attributes="0"/>
@@ -232,15 +235,18 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtfieldbduser" max="32767" attributes="0"/>
-                              <Component id="txtfieldbdsenha" max="32767" attributes="0"/>
-                              <Component id="txtfieldbdurl" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtfieldBdUser" max="32767" attributes="0"/>
+                              <Component id="txtfieldBdSenha" max="32767" attributes="0"/>
+                              <Component id="txtfieldBdUrl" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btbresetbdinfo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btbTesteConexao" max="32767" attributes="0"/>
+                              <Component id="btbResetInfo" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -250,26 +256,30 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblbduser" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfieldbduser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblbduser" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtfieldBdUser" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblbdurl" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfieldbdurl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblbdurl" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtfieldBdUrl" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblbdsenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfieldbdsenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtfieldBdSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="btbresetbdinfo" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="btbResetInfo" min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btbTesteConexao" min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -299,7 +309,7 @@
             <Property name="text" type="java.lang.String" value="Senha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfieldbdsenha">
+        <Component class="javax.swing.JTextField" name="txtfieldBdSenha">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -307,10 +317,10 @@
             <Property name="text" type="java.lang.String" value="utfpr"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldbdsenhaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldBdSenhaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfieldbduser">
+        <Component class="javax.swing.JTextField" name="txtfieldBdUser">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -318,21 +328,21 @@
             <Property name="text" type="java.lang.String" value="postgres"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldbduserActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldBdUserActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btbresetbdinfo">
+        <Component class="javax.swing.JButton" name="btbTesteConexao">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Reset Default"/>
+            <Property name="text" type="java.lang.String" value="Teste de Conex&#xe3;o"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btbresetbdinfoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btbTesteConexaoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfieldbdurl">
+        <Component class="javax.swing.JTextField" name="txtfieldBdUrl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -340,7 +350,7 @@
             <Property name="text" type="java.lang.String" value="jdbc:postgresql://localhost:5432/Principal_BD"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldbdurlActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfieldBdUrlActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblbdurl">
@@ -351,12 +361,23 @@
             <Property name="text" type="java.lang.String" value="URL:"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="btbResetInfo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Reset Default"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btbResetInfoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="lblLogo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/sources/logo.png"/>
+          <Image iconType="2" name="E:\OneDrive - alunos.utfpr.edu.br\1. UTFPR\Engenharia de Software\4 - Semestre\Programa&#xe7;&#xe3;o Orientada a Objetos 2\Trabalho Final 2\Projeto\GerenciadorDePets\src\main\java\sources\logo.png"/>
         </Property>
       </Properties>
     </Component>

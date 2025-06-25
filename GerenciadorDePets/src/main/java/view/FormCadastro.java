@@ -5,20 +5,31 @@
 package view;
 //import Jm.JMascara;
 
+import java.awt.Color;
+
+
 /**
  *
  * @author leonc
  */
 public class FormCadastro extends javax.swing.JFrame {
+    
+    //Singleton
+    private static FormCadastro gerFormCadastro;
 
-    /**
-     * Creates new form FormCadastro
-     */
-    public FormCadastro() {
+    private FormCadastro() {
         initComponents();
         IDWarning.setVisible(false);
     }
-
+    
+    public static FormCadastro GenFormCadastro(){
+        if(gerFormCadastro == null){
+            gerFormCadastro = new FormCadastro();
+        }
+        return gerFormCadastro;
+    }
+    //Singleton
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +52,7 @@ public class FormCadastro extends javax.swing.JFrame {
         lblID = new javax.swing.JLabel();
         txtfieldID = new javax.swing.JTextField();
         btnCadastro1 = new javax.swing.JButton();
-        txtfieldSenha1 = new javax.swing.JPasswordField();
+        txtfieldSenhaAgain = new javax.swing.JPasswordField();
         lblEndereco = new javax.swing.JLabel();
         txtfieldEndereco = new javax.swing.JTextField();
         lblEstado = new javax.swing.JLabel();
@@ -55,7 +66,7 @@ public class FormCadastro extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         IDWarning = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblEmail.setText("Digite seu E-Mail:");
@@ -123,9 +134,9 @@ public class FormCadastro extends javax.swing.JFrame {
         lblID.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldID.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                txtfieldIDMouseMoved(evt);
+        txtfieldID.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfieldIDFocusLost(evt);
             }
         });
         txtfieldID.addActionListener(new java.awt.event.ActionListener() {
@@ -149,10 +160,10 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
 
-        txtfieldSenha1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldSenha1.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldSenhaAgain.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldSenhaAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldSenha1ActionPerformed(evt);
+                txtfieldSenhaAgainActionPerformed(evt);
             }
         });
 
@@ -210,7 +221,7 @@ public class FormCadastro extends javax.swing.JFrame {
         warningsenha.setViewportView(jTextArea1);
 
         IDWarning.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        IDWarning.setForeground(new java.awt.Color(255, 0, 0));
+        IDWarning.setForeground(new java.awt.Color(0, 153, 0));
         IDWarning.setText("CNPJ/CPF Incorreto!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,7 +242,7 @@ public class FormCadastro extends javax.swing.JFrame {
                                 .addComponent(btnCadastro1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtfieldSenha1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtfieldSenhaAgain, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(lblSenha)
                                         .addGap(0, 0, Short.MAX_VALUE))
@@ -293,7 +304,7 @@ public class FormCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSenha2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfieldSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtfieldSenhaAgain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(warningsenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -335,9 +346,14 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfieldSenhaActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        // TODO add your handling code here:
+        cancelar();
     }//GEN-LAST:event_btnCadastroActionPerformed
-
+        
+    private void cancelar(){
+        GenFormCadastro().dispose();
+        FormLogin.GenFormLogin().lock(false);
+    }
+    
     private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
         ShowPassword();
     }//GEN-LAST:event_tbutShowPasswordActionPerformed
@@ -367,28 +383,46 @@ public class FormCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastro1ActionPerformed
 
-    private void txtfieldSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenha1ActionPerformed
+    private void txtfieldSenhaAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenhaAgainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldSenha1ActionPerformed
+    }//GEN-LAST:event_txtfieldSenhaAgainActionPerformed
 
-    private void txtfieldIDMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtfieldIDMouseMoved
-        acoes();
-    }//GEN-LAST:event_txtfieldIDMouseMoved
-
-    private void acoes(){
-        /*
-            if(validarCpf(JMascara.GetJmascaraLimpar(txtfieldID.getText())) == true){
-                IDWarning.setVisible(false);
+    private void warning(){
+            IDWarning.setForeground(Color.getHSBColor(120, 1f, 0.3f));
+            IDWarning.setVisible(false);
+            if(validarCpf(txtfieldID.getText()) == true){
+                IDWarning.setVisible(true);
+                IDWarning.setText("CPF Valido");
             }
-            else if(validarCnpj(JMascara.GetJmascaraLimpar(txtfieldID.getText())) == true){
-                IDWarning.setVisible(false);
+            else if(validarCnpj(txtfieldID.getText()) == true){
+                IDWarning.setVisible(true);
+                IDWarning.setText("CNPJ Valido");
             }
             else{
-                if(txtfieldID.getText().isEmpty() != true){
+                IDWarning.setForeground(Color.red);
+                if(txtfieldID.getText().isEmpty()){
+                    IDWarning.setText("Necessário um CPF ou CNPJ");
                     IDWarning.setVisible(true);
                 }
+                else if(txtfieldID.getText().length() == 14){
+                    IDWarning.setText("CNPJ inválido");
+                    IDWarning.setVisible(true);
+                }
+                else if(txtfieldID.getText().length() == 11){
+                    IDWarning.setText("CPF inválido");
+                    IDWarning.setVisible(true);
+                }
+                else{
+                    if(txtfieldID.getText().length()<14){
+                        IDWarning.setText("CNPJ inválido");
+                        IDWarning.setVisible(true);
+                    }
+                    if(txtfieldID.getText().length()<11){
+                        IDWarning.setText("CPF inválido");
+                        IDWarning.setVisible(true);
+                    }
+                }
             }
-        */
  
     }
     
@@ -403,6 +437,10 @@ public class FormCadastro extends javax.swing.JFrame {
     private void txtfieldEndNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEndNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfieldEndNumActionPerformed
+
+    private void txtfieldIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfieldIDFocusLost
+        warning();
+    }//GEN-LAST:event_txtfieldIDFocusLost
 
     public boolean validarCpf(String cpf) {
         if (cpf.equals("00000000000") || cpf.equals("11111111111") ||
@@ -551,7 +589,7 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtfieldID;
     private javax.swing.JTextField txtfieldNome;
     private javax.swing.JPasswordField txtfieldSenha;
-    private javax.swing.JPasswordField txtfieldSenha1;
+    private javax.swing.JPasswordField txtfieldSenhaAgain;
     private javax.swing.JScrollPane warningsenha;
     // End of variables declaration//GEN-END:variables
 }

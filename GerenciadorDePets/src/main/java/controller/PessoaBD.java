@@ -15,6 +15,22 @@ import model.Pessoa;
  * @author LucasTheobaldo
  */
 public class PessoaBD {
+    
+    //Singleton
+    private static PessoaBD gerPessoaBD;
+
+    private PessoaBD(){
+        
+    }
+    
+    public static PessoaBD Gen(){
+        if(gerPessoaBD == null){
+            gerPessoaBD = new PessoaBD();
+        }
+        return gerPessoaBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

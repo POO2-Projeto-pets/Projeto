@@ -26,38 +26,12 @@ public class FormGerCPF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblEmail = new javax.swing.JLabel();
-        txtfieldEmail = new javax.swing.JTextField();
-        lblSenha = new javax.swing.JLabel();
-        txtfieldPassword = new javax.swing.JPasswordField();
         tbutShowPassword = new javax.swing.JToggleButton();
         btnCadastro = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblEmail.setText("E-mail");
-        lblEmail.setToolTipText("");
-        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        txtfieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldEmailActionPerformed(evt);
-            }
-        });
-
-        lblSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblSenha.setText("Senha");
-        lblSenha.setToolTipText("");
-        lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        txtfieldPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldPasswordActionPerformed(evt);
-            }
-        });
 
         tbutShowPassword.setBackground(new java.awt.Color(204, 204, 204));
         tbutShowPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -78,38 +52,39 @@ public class FormGerCPF extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Gerenciar Pets");
+
+        jButton2.setText("Alterar Perfil");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtfieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtfieldPassword)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(tbutShowPassword))
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(348, 348, 348)
-                        .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(354, 354, 354)
+                        .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addComponent(lblEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tbutShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtfieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(254, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(89, 89, 89)
+                .addComponent(jButton1)
+                .addGap(56, 56, 56)
+                .addComponent(tbutShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -117,14 +92,6 @@ public class FormGerCPF extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldEmailActionPerformed
-
-    private void txtfieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldPasswordActionPerformed
 
     private void tbutShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbutShowPasswordActionPerformed
         //ShowPassword();
@@ -171,10 +138,8 @@ public class FormGerCPF extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblSenha;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JToggleButton tbutShowPassword;
-    private javax.swing.JTextField txtfieldEmail;
-    private javax.swing.JPasswordField txtfieldPassword;
     // End of variables declaration//GEN-END:variables
 }

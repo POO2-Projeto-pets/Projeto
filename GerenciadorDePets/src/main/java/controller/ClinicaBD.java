@@ -14,6 +14,22 @@ import model.Clinica;
  * @author LucasTheobaldo
  */
 public class ClinicaBD {
+    
+    //Singleton
+    private static ClinicaBD gerClinicaBD;
+
+    private ClinicaBD(){
+        
+    }
+    
+    public static ClinicaBD Gen(){
+        if(gerClinicaBD == null){
+            gerClinicaBD = new ClinicaBD();
+        }
+        return gerClinicaBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

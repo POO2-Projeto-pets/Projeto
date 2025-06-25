@@ -12,6 +12,22 @@ import java.sql.Statement;
  * @author LucasTheobaldo
  */
 public class ServicoBD {
+    
+    //Singleton
+    private static ServicoBD gerServicoBD;
+
+    private ServicoBD(){
+        
+    }
+    
+    public static ServicoBD Gen(){
+        if(gerServicoBD == null){
+            gerServicoBD = new ServicoBD();
+        }
+        return gerServicoBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

@@ -3,6 +3,7 @@
  */
 
 package com.mycompany.gerenciadordepets;
+import controller.*;
 import view.*;
 
 /**

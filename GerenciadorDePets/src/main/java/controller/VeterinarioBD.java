@@ -14,6 +14,22 @@ import model.Veterinario;
  * @author LucasTheobaldo
  */
 public class VeterinarioBD {
+    
+    //Singleton
+    private static VeterinarioBD gerVeterinarioBD;
+
+    private VeterinarioBD(){
+        
+    }
+    
+    public static VeterinarioBD Gen(){
+        if(gerVeterinarioBD == null){
+            gerVeterinarioBD = new VeterinarioBD();
+        }
+        return gerVeterinarioBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

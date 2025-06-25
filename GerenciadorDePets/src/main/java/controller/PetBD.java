@@ -14,6 +14,22 @@ import model.Pet;
  */
 
 public class PetBD {
+    
+    //Singleton
+    private static PetBD gerPetBD;
+
+    private PetBD(){
+        
+    }
+    
+    public static PetBD Gen(){
+        if(gerPetBD == null){
+            gerPetBD = new PetBD();
+        }
+        return gerPetBD;
+    }
+    //Singleton
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";

@@ -13,6 +13,24 @@ import model.Canil;
  * @author LucasTheobaldo
  */
 public class CanilBD {
+    
+    //Singleton
+    private static CanilBD gerCanilBD;
+
+    private CanilBD(){
+        
+    }
+    
+    public static CanilBD Gen(){
+        if(gerCanilBD == null){
+            gerCanilBD = new CanilBD();
+        }
+        return gerCanilBD;
+    }
+    //Singleton
+    
+    
+    
     static Connection con = null;
     static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
