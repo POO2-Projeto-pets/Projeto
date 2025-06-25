@@ -30,10 +30,7 @@ public class VeterinarioBD {
     //Singleton
     
     static Connection con = null;
-    static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
-    static String user = "postgres";
-    static String senha = "utfpr";
     
     Statement st = null;
         

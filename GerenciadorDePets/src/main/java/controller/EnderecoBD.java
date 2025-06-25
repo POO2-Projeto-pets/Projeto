@@ -4,7 +4,6 @@
  */
 package controller;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,10 +33,7 @@ public class EnderecoBD {
     
     
     static Connection con = null;
-    static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
-    static String user = "postgres";
-    static String senha = "utfpr";
     
     Statement st = null;
         
@@ -88,7 +84,7 @@ public class EnderecoBD {
                 + "WHERE uid = '1'";  */
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,senha);
+            con = Conexao.getCon();
             System.out.println("Inserindo dados de Endereço...");         
             ps = con.prepareStatement(sql1);
             System.out.println(ps);

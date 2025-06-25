@@ -22,12 +22,12 @@ public class Usuario {
 //        this.senha = senha;
 //    }
     
-    public Usuario(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep) {
+    public Usuario(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.ender = new Endereco(estado, cidade, rua, numero, cep);     
+        this.ender = new Endereco(uid, estado, cidade, rua, numero);     
     }
     
     public Usuario() {

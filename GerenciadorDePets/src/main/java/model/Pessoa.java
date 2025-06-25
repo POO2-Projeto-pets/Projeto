@@ -11,10 +11,10 @@ package model;
 public class Pessoa extends Usuario{
     private String cpf;
 
-    private Pessoa() {}
+    public Pessoa() {}
     
-    public Pessoa(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep, String cpf) {
-        super( id,  nome,  email,  senha,  estado,  cidade,  rua,  numero, cep);
+    public Pessoa(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cpf) {
+        super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero);
         this.cpf = cpf;
     }
 

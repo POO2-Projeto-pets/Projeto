@@ -4,7 +4,6 @@
  */
 package controller;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,10 +31,7 @@ public class PessoaBD {
     //Singleton
     
     static Connection con = null;
-    static String url = "jdbc:postgresql://localhost:5432/Principal_BD";
     static String driver = "org.postgresql.Driver";
-    static String user = "postgres";
-    static String senha = "utfpr";
     
     Statement st = null;
         

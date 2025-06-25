@@ -13,18 +13,18 @@ import java.util.ArrayList;
 public class Clinica extends Servico {
     private ArrayList<Veterinario> listaVeterinarios = new ArrayList<>();
 
-    public Clinica(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep, String cnpj, ArrayList<Veterinario> listaVeterinarios) {
-        super( id,  nome,  email,  senha,  estado,  cidade,  rua,  numero, cep, cnpj);
+    public Clinica(){}
+    
+    public Clinica(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj, ArrayList<Veterinario> listaVeterinarios) {
+        super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero, cnpj);
         this.listaVeterinarios = listaVeterinarios;
     }
 
     // Caso a Clinica ainda não tenha nenhum veterinario
-    public Clinica(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep, String cnpj) {
-        super( id,  nome,  email,  senha,  estado,  cidade,  rua,  numero, cep, cnpj);
+    public Clinica(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj) {
+        super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero, cnpj);
     }
     
-    private Clinica(){}
-
     public ArrayList<Veterinario> getListaVeterinarios() {
         return listaVeterinarios;
     }
