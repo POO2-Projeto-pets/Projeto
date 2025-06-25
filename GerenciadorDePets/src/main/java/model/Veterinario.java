@@ -12,10 +12,7 @@ public class Veterinario {
     private String crmv;
     private String especialidade;
 
-    public Veterinario() {
-        this.crmv = "";
-        this.especialidade = "";
-    }
+    private Veterinario() {}
 
     public Veterinario(String crmv, String especialidade) {
         this.crmv = crmv;

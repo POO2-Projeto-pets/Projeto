@@ -13,25 +13,21 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private Endereco ender = new Endereco();
+    private Endereco ender;
     
-    public Usuario(int id, String nome, String email, String senha) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-    }
+//    public Usuario(int id, String nome, String email, String senha) {
+//        this.id = id;
+//        this.nome = nome;
+//        this.email = email;
+//        this.senha = senha;
+//    }
     
     public Usuario(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.ender.setEstado(estado);
-        this.ender.setCidade(cidade);
-        this.ender.setRua(rua);
-        this.ender.setNumero(numero);
-        this.ender.setCep(cep);        
+        this.ender = new Endereco(estado, cidade, rua, numero, cep);     
     }
     
     public Usuario() {

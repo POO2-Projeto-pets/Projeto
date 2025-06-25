@@ -11,13 +11,12 @@ package model;
 public class Servico extends Usuario{
     private String cnpj;
 
-    public Servico(String cnpj) {
+    public Servico(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep, String cnpj) {
+        super(id, nome, email, senha, estado, cidade, rua, numero, cep);
         this.cnpj = cnpj;
     }
 
-    public Servico() {
-        this.cnpj = "";
-    }
+    public Servico() {}
 
     public String getCnpj() {
         return cnpj;

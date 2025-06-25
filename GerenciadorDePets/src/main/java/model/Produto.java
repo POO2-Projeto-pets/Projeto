@@ -13,11 +13,7 @@ public class Produto {
     private String nome;
     private float preco;
 
-    public Produto() {
-        this.id = 0;
-        this.nome = "";
-        this.preco = 0f;
-    }
+    private Produto() {}
     
     public Produto(int id, String nome, float preco) {
         this.id = id;

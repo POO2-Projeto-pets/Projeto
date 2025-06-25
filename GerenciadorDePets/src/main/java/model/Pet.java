@@ -32,18 +32,7 @@ public class Pet {
         this.cor = cor;
         this.especie = especie;
     }
-    public Pet() {
-        this.nome = "";
-        this.raca = "";
-        this.peso = 0f;
-        this.idade = 0;
-        this.genero = 0;
-        this.adocao = false;
-        this.id = 0;
-        this.habilidades = "";
-        this.cor = "";
-        this.especie = "";
-    }
+    private Pet() {}
     
     public String getNome() {
         return nome;

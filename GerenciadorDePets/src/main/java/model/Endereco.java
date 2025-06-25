@@ -15,6 +15,8 @@ public class Endereco{
     private int numero;
     private String cep;
 
+    private Endereco() {}
+    
     public Endereco(String estado, String cidade, String rua, int numero, String cep){
         this.estado = estado;
         this.cidade = cidade;
@@ -23,13 +25,6 @@ public class Endereco{
         this.cep = cep;
     }
 
-    public Endereco() {
-        this.estado = "";
-        this.cidade = "";
-        this.rua = "";
-        this.numero = 0;
-        this.cep = "";
-    }
     
     public String getEstado() {
         return estado;

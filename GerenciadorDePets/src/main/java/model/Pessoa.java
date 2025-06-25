@@ -11,11 +11,11 @@ package model;
 public class Pessoa extends Usuario{
     private String cpf;
 
-    public Pessoa(String cpf) {
+    private Pessoa() {}
+    
+    public Pessoa(int id, String nome, String email, String senha, String estado, String cidade, String rua, int numero, String cep, String cpf) {
+        super( id,  nome,  email,  senha,  estado,  cidade,  rua,  numero, cep);
         this.cpf = cpf;
-    }
-    public Pessoa() {
-        this.cpf = "";
     }
 
     public String getCpf() {
