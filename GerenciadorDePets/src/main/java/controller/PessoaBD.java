@@ -25,7 +25,7 @@ public class PessoaBD {
         
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Pessoa ("
-            + "cpf int"
+            + "cpf text unique"
             + ")INHERITS (Usuario)";
         try{
             Class.forName(driver);
@@ -61,20 +61,18 @@ public class PessoaBD {
     PreparedStatement ps = null;
         
     public void inserir(Pessoa pessoa){
-        String sql1 = "INSERT INTO Pessoa VALUES(?,?,?,?,?)";
-        try{//inserção de dados
+        String sql1 = "INSERT INTO Pessoa VALUES(DEFAULT,?,?,?,?)";
+        try{
             Class.forName(driver);
             con = DriverManager.getConnection(url,user,senha);
             System.out.println("Inserindo dados de Pessoa...");
             ps = con.prepareStatement(sql1);
-            ps.setInt(1, pessoa.getId());
-            ps.setString(2, pessoa.getNome());
-            ps.setString(3, pessoa.getEmail());
-            ps.setString(4, pessoa.getSenha());
-            ps.setString(5, pessoa.getCpf());
+            ps.setString(1, pessoa.getNome());
+            ps.setString(2, pessoa.getEmail());
+            ps.setString(3, pessoa.getSenha());
+            ps.setString(4, pessoa.getCpf());
             ps.execute();
             System.out.println("Dados inseridos com sucesso!");
-
             ps.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
