@@ -11,7 +11,16 @@ package model;
 public class Pessoa extends Usuario{
     private String cpf;
 
-    public Pessoa() {}
+    private static Pessoa gerPessoa;
+
+    private Pessoa(){}
+    
+    public static Pessoa Gen(){
+        if(gerPessoa == null){
+            gerPessoa = new Pessoa();
+        }
+        return gerPessoa;
+    }
     
     public Pessoa(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cpf) {
         super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero);

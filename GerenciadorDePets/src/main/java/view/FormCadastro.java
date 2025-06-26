@@ -5,7 +5,11 @@
 package view;
 //import Jm.JMascara;
 
+import controller.EnderecoBD;
+import controller.PessoaBD;
 import java.awt.Color;
+import model.Endereco;
+import model.Pessoa;
 
 
 /**
@@ -410,9 +414,58 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfieldIDActionPerformed
 
     private void btnCadastro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro1ActionPerformed
-        // TODO add your handling code here:
+        if(txtfieldID.getText().length() == 11){
+            EfetuaCadastroPessoa();
+        }else if(txtfieldID.getText().length() == 14){
+            EfetuaCadastroServico();
+        }    
     }//GEN-LAST:event_btnCadastro1ActionPerformed
+    private void EfetuaCadastroPessoa(){
+        if (PessoaBD.Gen().consultarPessoaCpf(txtfieldID.getText()) == false){
+            
+            Pessoa.Gen().setNome(txtfieldNome.getText());    
+            Pessoa.Gen().setEmail(txtfieldEmail.getText());
+            Pessoa.Gen().setSenha(txtfieldSenha.getText());
+            Pessoa.Gen().setCpf(txtfieldID.getText());
+            
+            PessoaBD.Gen().inserir(Pessoa.Gen());
 
+            Endereco.Gen().setUid(PessoaBD.Gen().consultarPessoaUid(txtfieldID.getText()));
+            Endereco.Gen().setEstado(combboxEstado.getSelectedItem().toString());
+            Endereco.Gen().setCidade(txtfieldCidade.getText());
+            Endereco.Gen().setRua(txtfieldEndereco.getText());
+            Endereco.Gen().setNumero(Integer.parseInt(txtfieldEndNum.getText()));
+            
+            EnderecoBD.Gen().inserir(Endereco.Gen());
+        }else{
+            //Mensagem de cpf ja registrado
+        }    
+    } 
+    
+    private void EfetuaCadastroServico(){
+        /*
+        if (PessoaBD.Gen().consultarPessoaCpf(txtfieldID.getText()) == false){
+            
+            Pessoa.Gen().setNome(txtfieldNome.getText());    
+            Pessoa.Gen().setEmail(txtfieldEmail.getText());
+            Pessoa.Gen().setSenha(txtfieldSenha.getText());
+            Pessoa.Gen().setCpf(txtfieldID.getText());
+            
+            PessoaBD.Gen().inserir(Pessoa.Gen());
+
+            Endereco.Gen().setUid(PessoaBD.Gen().consultarPessoaUid(txtfieldID.getText()));
+            Endereco.Gen().setEstado(combboxEstado.getSelectedItem().toString());
+            Endereco.Gen().setCidade(txtfieldCidade.getText());
+            Endereco.Gen().setRua(txtfieldEndereco.getText());
+            Endereco.Gen().setNumero(Integer.parseInt(txtfieldEndNum.getText()));
+            
+            EnderecoBD.Gen().inserir(Endereco.Gen());
+            
+        }else{
+            //Mensagem de cnpj ja registrado
+        } 
+        */
+    }
     private void txtfieldSenhaAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenhaAgainActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfieldSenhaAgainActionPerformed

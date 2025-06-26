@@ -14,8 +14,21 @@ public class Endereco{
     private String cidade;
     private String rua;
     private int numero;
+    
+    //Singleton
+    private static Endereco gerEndereco;
 
-    public Endereco() {}
+    private Endereco(){
+        
+    }
+    
+    public static Endereco Gen(){
+        if(gerEndereco == null){
+            gerEndereco = new Endereco();
+        }
+        return gerEndereco;
+    }
+    //Singleton
     
     public Endereco(int uid, String estado, String cidade, String rua, int numero){
         this.uid = uid;

@@ -5,6 +5,7 @@
 package controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Pessoa;
@@ -77,23 +78,60 @@ public class PessoaBD {
         try{
             Class.forName(driver);
             con = Conexao.getCon();
-            System.out.println("Inserindo dados de Pessoa...");
+
             ps = con.prepareStatement(sql1);
             ps.setString(1, pessoa.getNome());
             ps.setString(2, pessoa.getEmail());
             ps.setString(3, pessoa.getSenha());
             ps.setString(4, pessoa.getCpf());
             ps.execute();
-            System.out.println("Dados inseridos com sucesso!");
             ps.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao inserindo dados de Pessoa...(PessoaBD)");
             System.out.println(e);
         }
     }
     
-    public Pessoa consultarPessoa(int id){
-        return null;
+    public int consultarPessoaUid(String cpf){     
+        String sql1 = "SELECT uid FROM Pessoa WHERE cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, cpf);   
+            ResultSet res = ps.executeQuery();
+            int uid = 0;
+            while(res.next()){
+                uid = res.getInt("uid");              
+            }
+            ps.close();
+            con.close();
+            return uid; 
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao pesquisar uid de Pessoa...(PessoaBD)");
+            System.out.println(e);
+        }
+        return 0;
+    }
+    
+    public boolean consultarPessoaCpf(String cpf){     
+        String sql1 = "SELECT cpf FROM Pessoa WHERE cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, cpf);   
+            ResultSet res = ps.executeQuery();
+            boolean temp = res.next(); 
+            ps.close();
+            con.close();
+            return temp; 
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao pesquisar uid de Pessoa...(PessoaBD)");
+            System.out.println(e);
+        }
+        return false;
     }
     
     public void atualizarPessoa(Pessoa pessoa){

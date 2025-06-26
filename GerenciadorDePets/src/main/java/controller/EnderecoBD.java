@@ -84,17 +84,14 @@ public class EnderecoBD {
                 + "WHERE uid = '1'";  */
         try{
             Class.forName(driver);
-            con = Conexao.getCon();
-            System.out.println("Inserindo dados de Endereço...");         
+            con = Conexao.getCon();         
             ps = con.prepareStatement(sql1);
-            System.out.println(ps);
             ps.setInt(1, endereco.getUid());
             ps.setString(2, endereco.getEstado());
             ps.setString(3, endereco.getCidade());
             ps.setString(4, endereco.getRua());
             ps.setInt(5, endereco.getNumero());  
             ps.execute();
-            System.out.println("Dados inseridos com sucesso!");
             ps.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
