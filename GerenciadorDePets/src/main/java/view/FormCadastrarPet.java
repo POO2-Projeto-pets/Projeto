@@ -7,6 +7,7 @@ package view;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.Pet;
 
 /**
  *
@@ -41,12 +42,12 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblGenero = new javax.swing.JLabel();
         jcboxGenero = new javax.swing.JComboBox<>();
         lblHabilidades = new javax.swing.JLabel();
-        txtfieldEspecie1 = new javax.swing.JTextField();
-        lblHabilidades1 = new javax.swing.JLabel();
+        txtfieldEspecie = new javax.swing.JTextField();
+        lblSelecionarFoto = new javax.swing.JLabel();
         btnSelecionarFoto = new javax.swing.JButton();
         txtArquivoSelecionado = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,11 +57,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblNome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldNome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldNomeActionPerformed(evt);
-            }
-        });
 
         lblRaca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRaca.setText("Digite a Raça do Pet:");
@@ -68,11 +64,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblRaca.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldRaca.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldRaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldRacaActionPerformed(evt);
-            }
-        });
 
         lblDataNascimento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDataNascimento.setText("Digite a Data de Nascimento do Pet");
@@ -80,11 +71,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblDataNascimento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldHabilidades.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldHabilidades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldHabilidadesActionPerformed(evt);
-            }
-        });
 
         lblEspecie.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblEspecie.setText("Digite a Espécie do Pet:");
@@ -92,11 +78,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblEspecie.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldDataNascimentoActionPerformed(evt);
-            }
-        });
 
         lblGenero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblGenero.setText("Informe o Gênero do Pet");
@@ -106,21 +87,16 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         jcboxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         lblHabilidades.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblHabilidades.setText("Digite a Data de Nascimento do Pet");
+        lblHabilidades.setText("Informe as Habilidades do Pet (opcional)");
         lblHabilidades.setToolTipText("");
         lblHabilidades.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtfieldEspecie1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldEspecie1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldEspecie1ActionPerformed(evt);
-            }
-        });
+        txtfieldEspecie.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        lblHabilidades1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblHabilidades1.setText("Selecione uma Foto do Seu Pet (.jpg, .png)");
-        lblHabilidades1.setToolTipText("");
-        lblHabilidades1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblSelecionarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSelecionarFoto.setText("Selecione uma Foto do Seu Pet (.jpg, .png)");
+        lblSelecionarFoto.setToolTipText("");
+        lblSelecionarFoto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnSelecionarFoto.setText("SELECIONAR FOTO");
         btnSelecionarFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -131,18 +107,23 @@ public class FormCadastrarPet extends javax.swing.JFrame {
 
         txtArquivoSelecionado.setText("Nome do Arquivo");
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("CANCELAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(255, 51, 102));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(30, 74, 145));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("FINALIZAR");
+        btnFinalizar.setBackground(new java.awt.Color(30, 74, 145));
+        btnFinalizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnFinalizar.setText("FINALIZAR");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +136,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                     .addComponent(txtfieldRaca)
                     .addComponent(txtfieldHabilidades)
                     .addComponent(txtfieldDataNascimento)
-                    .addComponent(txtfieldEspecie1)
+                    .addComponent(txtfieldEspecie)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNome)
@@ -165,7 +146,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                             .addComponent(lblGenero)
                             .addComponent(jcboxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblHabilidades)
-                            .addComponent(lblHabilidades1))
+                            .addComponent(lblSelecionarFoto))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSelecionarFoto)
@@ -173,9 +154,9 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                         .addComponent(txtArquivoSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(80, 80, 80)))
                 .addContainerGap())
         );
@@ -193,7 +174,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblEspecie)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfieldEspecie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtfieldEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDataNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,48 +188,32 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtfieldHabilidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblHabilidades1)
+                .addComponent(lblSelecionarFoto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSelecionarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtArquivoSelecionado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtfieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldNomeActionPerformed
-
-    private void txtfieldRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldRacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldRacaActionPerformed
-
-    private void txtfieldHabilidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldHabilidadesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldHabilidadesActionPerformed
-
-    private void txtfieldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldDataNascimentoActionPerformed
-
-    private void txtfieldEspecie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEspecie1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldEspecie1ActionPerformed
-
     private void btnSelecionarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarFotoActionPerformed
         selecionarFoto();
     }//GEN-LAST:event_btnSelecionarFotoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        cadastrarPet();
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void selecionarFoto() {
         JFileChooser fileChooser = new JFileChooser();
@@ -263,7 +228,10 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         }
     }
     
-    
+    private void cadastrarPet(){
+        // Recuper Dados do pet
+    }
+
     
     /**
      * @param args the command line arguments
@@ -301,20 +269,20 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnSelecionarFoto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jcboxGenero;
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JLabel lblEspecie;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblHabilidades;
-    private javax.swing.JLabel lblHabilidades1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblRaca;
+    private javax.swing.JLabel lblSelecionarFoto;
     private javax.swing.JLabel txtArquivoSelecionado;
     private javax.swing.JTextField txtfieldDataNascimento;
-    private javax.swing.JTextField txtfieldEspecie1;
+    private javax.swing.JTextField txtfieldEspecie;
     private javax.swing.JTextField txtfieldHabilidades;
     private javax.swing.JTextField txtfieldNome;
     private javax.swing.JTextField txtfieldRaca;
