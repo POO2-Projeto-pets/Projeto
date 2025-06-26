@@ -6,9 +6,6 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[520, 590]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[520, 590]"/>
     </Property>
@@ -375,11 +372,6 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="lblLogo">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\OneDrive - alunos.utfpr.edu.br\1. UTFPR\Engenharia de Software\4 - Semestre\Programa&#xe7;&#xe3;o Orientada a Objetos 2\Trabalho Final 2\Projeto\GerenciadorDePets\src\main\java\sources\logo.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>

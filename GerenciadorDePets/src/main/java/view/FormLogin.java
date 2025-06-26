@@ -61,7 +61,6 @@ public class FormLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(520, 590));
         setMinimumSize(new java.awt.Dimension(520, 590));
         setUndecorated(true);
         setSize(new java.awt.Dimension(520, 590));
@@ -236,8 +235,6 @@ public class FormLogin extends javax.swing.JFrame {
                         .addComponent(btbTesteConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
-
-        lblLogo.setIcon(new javax.swing.ImageIcon("E:\\OneDrive - alunos.utfpr.edu.br\\1. UTFPR\\Engenharia de Software\\4 - Semestre\\Programação Orientada a Objetos 2\\Trabalho Final 2\\Projeto\\GerenciadorDePets\\src\\main\\java\\sources\\logo.png")); // NOI18N
 
         btnExit.setBackground(new java.awt.Color(255, 153, 153));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
