@@ -78,7 +78,7 @@ public class EnderecoBD {
     
     PreparedStatement ps = null;
     
-    public void inserir(Endereco endereco){
+    public void inserirEndereco(Endereco endereco){
         String sql1 = " INSERT INTO Endereco VALUES(?,?,?,?,?)";
         /*String sql1 = "UPDATE Endereco SET estado = (?), cidade = (?), rua = (?), numero  = (?)"
                 + "WHERE uid = '1'";  */

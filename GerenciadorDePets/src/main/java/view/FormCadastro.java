@@ -3,13 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-//import Jm.JMascara;
 
+import controller.CanilBD;
+import controller.ClinicaBD;
 import controller.EnderecoBD;
 import controller.PessoaBD;
+import controller.PetShopBD;
+import controller.ServicoBD;
+import controller.VeterinarioBD;
 import java.awt.Color;
+import model.Canil;
+import model.Clinica;
 import model.Endereco;
 import model.Pessoa;
+import model.PetShop;
+import model.Veterinario;
 
 
 /**
@@ -428,7 +436,7 @@ public class FormCadastro extends javax.swing.JFrame {
             Pessoa.Gen().setSenha(txtfieldSenha.getText());
             Pessoa.Gen().setCpf(txtfieldID.getText());
             
-            PessoaBD.Gen().inserir(Pessoa.Gen());
+            PessoaBD.Gen().inserirPessoa(Pessoa.Gen());
 
             Endereco.Gen().setUid(PessoaBD.Gen().consultarPessoaUid(txtfieldID.getText()));
             Endereco.Gen().setEstado(combboxEstado.getSelectedItem().toString());
@@ -436,35 +444,64 @@ public class FormCadastro extends javax.swing.JFrame {
             Endereco.Gen().setRua(txtfieldEndereco.getText());
             Endereco.Gen().setNumero(Integer.parseInt(txtfieldEndNum.getText()));
             
-            EnderecoBD.Gen().inserir(Endereco.Gen());
+            EnderecoBD.Gen().inserirEndereco(Endereco.Gen());
         }else{
             //Mensagem de cpf ja registrado
         }    
     } 
     
     private void EfetuaCadastroServico(){
-        /*
-        if (PessoaBD.Gen().consultarPessoaCpf(txtfieldID.getText()) == false){
+        
+        if (ServicoBD.Gen().consultarServicoCnpj(txtfieldID.getText()) == false){
             
-            Pessoa.Gen().setNome(txtfieldNome.getText());    
-            Pessoa.Gen().setEmail(txtfieldEmail.getText());
-            Pessoa.Gen().setSenha(txtfieldSenha.getText());
-            Pessoa.Gen().setCpf(txtfieldID.getText());
+            int temp = 0;
             
-            PessoaBD.Gen().inserir(Pessoa.Gen());
+            switch(temp) {
+                case 2:
+                    PetShop.Gen().setNome(txtfieldNome.getText());    
+                    PetShop.Gen().setEmail(txtfieldEmail.getText());
+                    PetShop.Gen().setSenha(txtfieldSenha.getText());
+                    PetShop.Gen().setCnpj(txtfieldID.getText());
 
-            Endereco.Gen().setUid(PessoaBD.Gen().consultarPessoaUid(txtfieldID.getText()));
+                    PetShopBD.Gen().inserirPetShop(PetShop.Gen());
+                  break;
+                case 3:
+                    Clinica.Gen().setNome(txtfieldNome.getText());    
+                    Clinica.Gen().setEmail(txtfieldEmail.getText());
+                    Clinica.Gen().setSenha(txtfieldSenha.getText());
+                    Clinica.Gen().setCnpj(txtfieldID.getText());
+
+                    ClinicaBD.Gen().inserirClinica(Clinica.Gen());
+                  break;
+                case 4:
+                    Veterinario.Gen().setNome(txtfieldNome.getText());    
+                    Veterinario.Gen().setEmail(txtfieldEmail.getText());
+                    Veterinario.Gen().setSenha(txtfieldSenha.getText());
+                    Veterinario.Gen().setCnpj(txtfieldID.getText());
+
+                    VeterinarioBD.Gen().inserirVeterinario(Veterinario.Gen());
+                  break;
+                default:
+                    Canil.Gen().setNome(txtfieldNome.getText());    
+                    Canil.Gen().setEmail(txtfieldEmail.getText());
+                    Canil.Gen().setSenha(txtfieldSenha.getText());
+                    Canil.Gen().setCnpj(txtfieldID.getText());
+
+                    CanilBD.Gen().inserirCanil(Canil.Gen());
+            }
+
+            Endereco.Gen().setUid(ServicoBD.Gen().consultarServicoUid(txtfieldID.getText()));
             Endereco.Gen().setEstado(combboxEstado.getSelectedItem().toString());
             Endereco.Gen().setCidade(txtfieldCidade.getText());
             Endereco.Gen().setRua(txtfieldEndereco.getText());
             Endereco.Gen().setNumero(Integer.parseInt(txtfieldEndNum.getText()));
             
-            EnderecoBD.Gen().inserir(Endereco.Gen());
+            EnderecoBD.Gen().inserirEndereco(Endereco.Gen());
             
         }else{
             //Mensagem de cnpj ja registrado
         } 
-        */
+        
     }
     private void txtfieldSenhaAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldSenhaAgainActionPerformed
         // TODO add your handling code here:

@@ -4,6 +4,7 @@
  */
 package controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.PetShop;
@@ -16,9 +17,7 @@ public class PetShopBD {
     //Singleton
     private static PetShopBD gerPetShopBD;
 
-    private PetShopBD(){
-        
-    }
+    private PetShopBD(){}
     
     public static PetShopBD Gen(){
         if(gerPetShopBD == null){
@@ -69,6 +68,27 @@ public class PetShopBD {
             System.out.println(e);
         }
     }    
+    
+    PreparedStatement ps = null;
+    
+    public void inserirPetShop(PetShop petshop){
+        String sql1 = "INSERT INTO PetShop VALUES(DEFAULT,?,?,?,?)";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, petshop.getNome());
+            ps.setString(2, petshop.getEmail());
+            ps.setString(3, petshop.getSenha());
+            ps.setString(4, petshop.getCnpj());
+            ps.execute();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao inserindo dados de PetShop...(PetShopBD)");
+            System.out.println(e);
+        }
+    }
     
     public PetShop consultarPetShop(int id){
         return null;

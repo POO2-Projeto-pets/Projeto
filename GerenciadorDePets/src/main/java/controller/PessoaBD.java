@@ -73,7 +73,7 @@ public class PessoaBD {
     
     PreparedStatement ps = null;
         
-    public void inserir(Pessoa pessoa){
+    public void inserirPessoa(Pessoa pessoa){
         String sql1 = "INSERT INTO Pessoa VALUES(DEFAULT,?,?,?,?)";
         try{
             Class.forName(driver);

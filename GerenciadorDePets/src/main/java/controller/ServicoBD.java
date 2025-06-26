@@ -4,6 +4,8 @@
  */
 package controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 /**
@@ -66,5 +68,48 @@ public class ServicoBD {
             System.out.println(e);
         }
 
+    }
+    
+    PreparedStatement ps = null;
+    
+    public int consultarServicoUid(String cpf){     
+        String sql1 = "SELECT uid FROM Servico WHERE cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, cpf);   
+            ResultSet res = ps.executeQuery();
+            int uid = 0;
+            while(res.next()){
+                uid = res.getInt("uid");              
+            }
+            ps.close();
+            con.close();
+            return uid; 
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao pesquisar uid de Servico...(ServicoBD)");
+            System.out.println(e);
+        }
+        return 0;
+    }
+        
+    public boolean consultarServicoCnpj(String cnpj){     
+        String sql1 = "SELECT cnpj FROM Servico WHERE cnpj = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, cnpj);   
+            ResultSet res = ps.executeQuery();
+            boolean temp = res.next(); 
+            ps.close();
+            con.close();
+            return temp; 
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao pesquisar uid de Servico...(ServicoBD)");
+            System.out.println(e);
+        }
+        return false;
     }
 }

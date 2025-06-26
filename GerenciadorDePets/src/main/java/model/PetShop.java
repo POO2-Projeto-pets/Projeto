@@ -13,7 +13,20 @@ import java.util.ArrayList;
 public class PetShop extends Servico{
     private ArrayList<Produto> listaProdutos = new ArrayList<>();
 
-    public PetShop(){}
+    //Singleton
+    private static PetShop gerPetShop;
+
+    private PetShop(){
+        
+    }
+    
+    public static PetShop Gen(){
+        if(gerPetShop == null){
+            gerPetShop = new PetShop();
+        }
+        return gerPetShop;
+    }
+    //Singleton
     
     public PetShop(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj, ArrayList<Produto> listaProdutos) {
         super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero, cnpj);

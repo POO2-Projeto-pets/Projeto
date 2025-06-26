@@ -68,8 +68,7 @@ public class PetBD {
             + "corPreodominante text,"     
             + "genero gen,"
             + "habilidades text,"      
-            + "nome text,"        
-            + "dadosClinicos text"                 
+            + "nome text"                          
             + ")";
         try{
             Class.forName(driver);

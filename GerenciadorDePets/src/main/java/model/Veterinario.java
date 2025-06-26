@@ -8,11 +8,24 @@ package model;
  *
  * @author leonc
  */
-public class Veterinario {
+public class Veterinario extends Servico{
     private String crmv;
     private String especialidade;
 
-    private Veterinario() {}
+     //Singleton
+    private static Veterinario gerVeterinario;
+
+    private Veterinario(){
+        
+    }
+    
+    public static Veterinario Gen(){
+        if(gerVeterinario == null){
+            gerVeterinario = new Veterinario();
+        }
+        return gerVeterinario;
+    }
+    //Singleton
 
     public Veterinario(String crmv, String especialidade) {
         this.crmv = crmv;
