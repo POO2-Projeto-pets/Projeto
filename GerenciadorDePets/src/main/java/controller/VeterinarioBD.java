@@ -50,10 +50,10 @@ public class VeterinarioBD {
             System.out.println(e);
         }
         
-        String sqlRel = "CREATE TABLE IF NOT EXISTS veterinario_veterinario ("
+        String sqlRel = "CREATE TABLE IF NOT EXISTS clinica_veterinario  ("
             + "veterinario_id text,"
-            + "veterinario_id int,"
-            + " PRIMARY KEY (veterinario_id, veterinario_id)"
+            + "clinica_id int,"
+            + " PRIMARY KEY (veterinario_id, clinica_id)"
             + ")";
         try{
             Class.forName(driver);
@@ -63,13 +63,13 @@ public class VeterinarioBD {
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("\nErro ao criar a tabela veterinario_veterinario...(VeterinarioDB)");  
+            System.out.println("\nErro ao criar a tabela clinica_veterinario...(VeterinarioDB)");   
             System.out.println(e);
         }
         
         sqlRel = "DO $$ BEGIN "
-            +"ALTER TABLE veterinario_veterinario ADD CONSTRAINT fk_veterinario FOREIGN KEY(veterinario_id) REFERENCES Veterinario(uid) DEFERRABLE INITIALLY DEFERRED;"
-            +"ALTER TABLE veterinario_veterinario ADD CONSTRAINT fk_veterinario FOREIGN KEY(veterinario_id) REFERENCES Veterinario(crmv) DEFERRABLE INITIALLY DEFERRED;"
+            +"ALTER TABLE clinica_veterinario ADD CONSTRAINT fk_clinica FOREIGN KEY(clinica_id) REFERENCES Clinica(uid) DEFERRABLE INITIALLY DEFERRED;"
+            +"ALTER TABLE clinica_veterinario ADD CONSTRAINT fk_veterinario FOREIGN KEY(veterinario_id) REFERENCES Veterinario(crmv) DEFERRABLE INITIALLY DEFERRED;"
             +"EXCEPTION "
             +"WHEN duplicate_object THEN null;"
             +"END $$";
@@ -81,7 +81,7 @@ public class VeterinarioBD {
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("\nErro ao criar relacão veterinario_veterinario...(VeterinarioDB)");
+            System.out.println("\nErro ao criar relacão clinica_veterinario...(VeterinarioDB)");
             System.out.println(e);
         }
     }

@@ -429,7 +429,7 @@ public class FormCadastro extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnCadastro1ActionPerformed
     private void EfetuaCadastroPessoa(){
-        if (PessoaBD.Gen().consultarPessoaCpf(txtfieldID.getText()) == false){
+        if (PessoaBD.Gen().consultarPessoaCpfExiste(txtfieldID.getText()) == false){
             
             Pessoa.Gen().setNome(txtfieldNome.getText());    
             Pessoa.Gen().setEmail(txtfieldEmail.getText());
