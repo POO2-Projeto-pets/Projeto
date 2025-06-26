@@ -48,7 +48,7 @@ public class PessoaBD {
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Erro ao criar a tabela Pessoa...");
+            System.out.println("\nErro ao criar a tabela Pessoa...(PessoaBD)\n");
             System.out.println(e);
         }
         
@@ -65,7 +65,7 @@ public class PessoaBD {
             st.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("\nErro ao criar a PK de Pessoa...(PessoaBD)"); 
+            System.out.println("\nErro ao criar a PK de Pessoa...(PessoaBD)\n"); 
             System.out.println(e);
         }
 
@@ -84,11 +84,11 @@ public class PessoaBD {
             ps.setString(2, pessoa.getEmail());
             ps.setString(3, pessoa.getSenha());
             ps.setString(4, pessoa.getCpf());
-            ps.execute();
+            ps.executeUpdate();
             ps.close();
             con.close();
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Erro ao inserindo dados de Pessoa...(PessoaBD)");
+            System.out.println("\nErro ao inserindo dados de Pessoa...(PessoaBD)\n");
             System.out.println(e);
         }
     }
@@ -109,13 +109,13 @@ public class PessoaBD {
             con.close();
             return uid; 
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Erro ao pesquisar uid de Pessoa...(PessoaBD)");
+            System.out.println("\nErro ao pesquisar uid de Pessoa...(PessoaBD)\n");
             System.out.println(e);
         }
         return 0;
     }
     
-    public boolean consultarPessoaCpf(String cpf){     
+    public boolean consultarPessoaCpfExiste(String cpf){     
         String sql1 = "SELECT cpf FROM Pessoa WHERE cpf = ?";
         try{
             Class.forName(driver);
@@ -128,15 +128,46 @@ public class PessoaBD {
             con.close();
             return temp; 
         }catch(ClassNotFoundException | SQLException e){
-            System.out.println("Erro ao pesquisar uid de Pessoa...(PessoaBD)");
+            System.out.println("\nErro ao pesquisar existencia do cpf de Pessoa...(PessoaBD)\n");
             System.out.println(e);
         }
         return false;
     }
     
-    public void atualizarPessoa(Pessoa pessoa){
-        // Não pode mudar ID
-        // Não pode mudar CPF
+    public void atualizarPessoa(Pessoa pessoa, String cpf){
+        String sql1 = "UPDATE Pessoa SET nome = ?, email = ?, senha = ? WHERE cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, pessoa.getNome());
+            ps.setString(2, pessoa.getEmail());
+            ps.setString(3, pessoa.getSenha());
+            ps.setString(4, cpf);
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Pessoa...(PessoaBD)\n");                                                       
+            System.out.println(e);
+        }
+        
     }
-   
+    
+    public void deletarPessoaCpf(String cpf){     
+        String sql1 = "DELETE FROM Pessoa WHERE  cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, cpf); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Pessoa...(PessoaBD)\n");
+            System.out.println(e);
+        }
+    }
 }
+

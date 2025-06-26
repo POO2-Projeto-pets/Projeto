@@ -4,35 +4,85 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author LucasTheobaldo
  */
 public class Pet {
+    private int pid;
+    private int cid;
+    private int uid;
+    private byte[] foto;
     private String nome;
     private String raca;
     private Float peso;
-    private int idade;
-    private int genero;
-    private Boolean adocao;
-    private int id;
+    private Date idade;
+    private String genero;
     private String habilidades;
-    private String cor;
     private String especie;
     
-    public Pet(String nome, String raca, Float peso, int idade, int genero, Boolean adocao, int id, String habilidades, String cor, String especie) {
+    //Singleton
+    private static Pet gerPet;
+
+    private Pet(){
+        
+    }
+    
+    public static Pet Gen(){
+        if(gerPet == null){
+            gerPet = new Pet();
+        }
+        return gerPet;
+    }
+    //Singleton
+
+    public Pet(int pid, int cid, int uid, byte[] foto, String nome, String raca, Float peso, Date idade, String genero, String habilidades, String especie) {
+        this.pid = pid;
+        this.cid = cid;
+        this.uid = uid;
+        this.foto = foto;
         this.nome = nome;
         this.raca = raca;
         this.peso = peso;
         this.idade = idade;
         this.genero = genero;
-        this.adocao = adocao;
-        this.id = id;
         this.habilidades = habilidades;
-        this.cor = cor;
         this.especie = especie;
     }
-    private Pet() {}
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }   
     
     public String getNome() {
         return nome;
@@ -58,36 +108,20 @@ public class Pet {
         this.peso = peso;
     }
 
-    public int getIdade() {
+    public Date getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Date idade) {
         this.idade = idade;
     }
 
-    public int getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(int genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public Boolean getAdocao() {
-        return adocao;
-    }
-
-    public void setAdocao(Boolean adocao) {
-        this.adocao = adocao;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getHabilidades() {
@@ -96,14 +130,6 @@ public class Pet {
 
     public void setHabilidades(String habilidades) {
         this.habilidades = habilidades;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public String getEspecie() {

@@ -4,6 +4,7 @@
  */
 package view;
 
+import sources.*;
 import controller.*;
 import javax.swing.JOptionPane;
 
@@ -235,6 +236,8 @@ public class FormLogin extends javax.swing.JFrame {
                         .addComponent(btbTesteConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15))
         );
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sources/logo.png"))); // NOI18N
 
         btnExit.setBackground(new java.awt.Color(255, 153, 153));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
