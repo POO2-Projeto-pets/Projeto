@@ -31,7 +31,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblRaca = new javax.swing.JLabel();
         txtfieldRaca = new javax.swing.JTextField();
         lblRaca1 = new javax.swing.JLabel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,12 +77,8 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                             .addComponent(lblNome)
                             .addComponent(lblRaca)
                             .addComponent(lblRaca1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 158, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,9 +93,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
                 .addComponent(txtfieldRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRaca1)
-                .addGap(18, 18, 18)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,7 +143,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblRaca;
     private javax.swing.JLabel lblRaca1;
