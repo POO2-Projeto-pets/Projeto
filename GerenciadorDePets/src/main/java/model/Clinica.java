@@ -13,7 +13,20 @@ import java.util.ArrayList;
 public class Clinica extends Servico {
     private ArrayList<Veterinario> listaVeterinarios = new ArrayList<>();
 
-    public Clinica(){}
+    //Singleton
+    private static Clinica gerClinica;
+
+    private Clinica(){
+        
+    }
+    
+    public static Clinica Gen(){
+        if(gerClinica == null){
+            gerClinica = new Clinica();
+        }
+        return gerClinica;
+    }
+    //Singleton
     
     public Clinica(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj, ArrayList<Veterinario> listaVeterinarios) {
         super( id,  nome,  email,  senha,  uid, estado,  cidade,  rua,  numero, cnpj);

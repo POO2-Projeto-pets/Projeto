@@ -12,10 +12,21 @@ import java.util.ArrayList;
  */
 public class Canil extends Servico{
     private ArrayList<Pet> listaPets = new ArrayList<>();
-
-    public Canil(){}
     
-    public Canil(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj, ArrayList<Pet> listaPets) {
+    //Singleton
+    private static Canil gerCanil;
+
+    private Canil(){}
+    
+    public static Canil Gen(){
+        if(gerCanil == null){
+            gerCanil = new Canil();
+        }
+        return gerCanil;
+    }
+    //Singleton
+    
+    public Canil(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero, String cnpj, ArrayList<Pet> listaPets)      {
         super(id, nome, email, senha, uid, estado, cidade, rua, numero, cnpj);
         this.listaPets = listaPets;
     }

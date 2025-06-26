@@ -4,6 +4,7 @@
  */
 package controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Canil;
@@ -25,8 +26,6 @@ public class CanilBD {
         return gerCanilBD;
     }
     //Singleton
-    
-    
     
     static Connection con = null;
     static String driver = "org.postgresql.Driver";
@@ -63,6 +62,27 @@ public class CanilBD {
             con.close();
         }catch(ClassNotFoundException | SQLException e){
             System.out.println("\nErro ao criar a PK de Canil...(CanilBD)"); 
+            System.out.println(e);
+        }
+    }
+    
+    PreparedStatement ps = null;
+    
+    public void inserirCanil(Canil canil){
+        String sql1 = "INSERT INTO Canil VALUES(DEFAULT,?,?,?,?)";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, canil.getNome());
+            ps.setString(2, canil.getEmail());
+            ps.setString(3, canil.getSenha());
+            ps.setString(4, canil.getCnpj());
+            ps.execute();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao inserindo dados de Canil...(CanilBD)");
             System.out.println(e);
         }
     }

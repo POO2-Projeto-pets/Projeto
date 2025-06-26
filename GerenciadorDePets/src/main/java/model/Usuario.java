@@ -15,13 +15,6 @@ public class Usuario {
     private String senha;
     private Endereco ender;
     
-//    public Usuario(int id, String nome, String email, String senha) {
-//        this.id = id;
-//        this.nome = nome;
-//        this.email = email;
-//        this.senha = senha;
-//    }
-    
     public Usuario(int id, String nome, String email, String senha, int uid, String estado, String cidade, String rua, int numero) {
         this.id = id;
         this.nome = nome;

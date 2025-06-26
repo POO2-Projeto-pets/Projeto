@@ -5,6 +5,7 @@
 package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Clinica;
@@ -18,9 +19,7 @@ public class ClinicaBD {
     //Singleton
     private static ClinicaBD gerClinicaBD;
 
-    private ClinicaBD(){
-        
-    }
+    private ClinicaBD(){}
     
     public static ClinicaBD Gen(){
         if(gerClinicaBD == null){
@@ -65,6 +64,27 @@ public class ClinicaBD {
             con.close();
         }catch(ClassNotFoundException | SQLException e){
             System.out.println("\nErro ao criar a PK de Clinica...(ClinicaBD)"); 
+            System.out.println(e);
+        }
+    }
+    
+    PreparedStatement ps = null;
+    
+    public void inserirClinica(Clinica clinica){
+        String sql1 = "INSERT INTO Clinica VALUES(DEFAULT,?,?,?,?)";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, clinica.getNome());
+            ps.setString(2, clinica.getEmail());
+            ps.setString(3, clinica.getSenha());
+            ps.setString(4, clinica.getCnpj());
+            ps.execute();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao inserindo dados de Clinica...(ClinicaBD)");
             System.out.println(e);
         }
     }
