@@ -357,6 +357,7 @@ public class FormLogin extends javax.swing.JFrame {
     private void entrar(){
         if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){          
             if(txtfieldID.getText().length() == 11){
+                FormPagnaUser.Gen().selec();
                 Pessoa.Gen().setCpf(txtfieldID.getText());
                 FormPagnaUser.Gen().setVisible(true);
             }else if(txtfieldID.getText().length() == 14){

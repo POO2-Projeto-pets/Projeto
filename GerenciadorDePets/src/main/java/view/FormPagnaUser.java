@@ -21,20 +21,12 @@ public class FormPagnaUser extends javax.swing.JFrame {
     
     public FormPagnaUser() {
         initComponents();
-        
-        if(Pessoa.Gen().getCpf() != null){
-                PanelPessoa.setVisible(true);
-                PanelCanil.setVisible(false);
-            }else{
-                PanelCanil.setVisible(true);
-                PanelPessoa.setVisible(false);
-            }  
     }
 
     public static FormPagnaUser Gen(){
         if(gerFormPagnaUser == null){
             gerFormPagnaUser = new FormPagnaUser();
-        }
+        }  
         return gerFormPagnaUser;
     }
     //Singleton
@@ -184,6 +176,13 @@ public class FormPagnaUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
+        if(PessoaBD.Gen().consultarPessoaCpfExiste(FormLogin.Gen().getUserID())){
+                PanelPessoa.setVisible(true);
+                PanelCanil.setVisible(false);
+            }else{
+                PanelCanil.setVisible(true);
+                PanelPessoa.setVisible(false);
+            }  
         Gen().dispose();     
     }//GEN-LAST:event_btnCadastroActionPerformed
 
@@ -192,6 +191,13 @@ public class FormPagnaUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastro1ActionPerformed
 
     private void btnCadastro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro2ActionPerformed
+        if(PessoaBD.Gen().consultarPessoaCpfExiste(FormLogin.Gen().getUserID())){
+                PanelPessoa.setVisible(true);
+                PanelCanil.setVisible(false);
+            }else{
+                PanelCanil.setVisible(true);
+                PanelPessoa.setVisible(false);
+            }  
         Gen().dispose(); 
     }//GEN-LAST:event_btnCadastro2ActionPerformed
 
@@ -206,18 +212,23 @@ public class FormPagnaUser extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelPessoasFocusGained
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-        if(PessoaBD.Gen().consultarPessoaCpfExiste(FormLogin.Gen().getUserID())){
+       selec();
+    }//GEN-LAST:event_formFocusGained
+
+    /**
+     * @param args the command line arguments
+     */
+    
+    public void selec() {
+         if(PessoaBD.Gen().consultarPessoaCpfExiste(FormLogin.Gen().getUserID())){
                 PanelPessoa.setVisible(true);
                 PanelCanil.setVisible(false);
             }else{
                 PanelCanil.setVisible(true);
                 PanelPessoa.setVisible(false);
             }  
-    }//GEN-LAST:event_formFocusGained
-
-    /**
-     * @param args the command line arguments
-     */
+    }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
