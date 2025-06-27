@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.PessoaBD;
 import model.Pessoa;
 
 /**
@@ -22,11 +23,11 @@ public class FormPagnaUser extends javax.swing.JFrame {
         initComponents();
         
         if(Pessoa.Gen().getCpf() != null){
-                PanelCanil.setVisible(true);
-                PanelPessoa.setVisible(false);
-            }else{
                 PanelPessoa.setVisible(true);
                 PanelCanil.setVisible(false);
+            }else{
+                PanelCanil.setVisible(true);
+                PanelPessoa.setVisible(false);
             }  
     }
 
@@ -45,14 +46,19 @@ public class FormPagnaUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelPessoa = new javax.swing.JPanel();
+        PanelCanil = new javax.swing.JPanel();
         btnCadastro = new javax.swing.JButton();
         btnCadastro1 = new javax.swing.JButton();
-        PanelCanil = new javax.swing.JPanel();
+        PanelPessoa = new javax.swing.JPanel();
         btnCadastro2 = new javax.swing.JButton();
         btnCadastro3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         btnCadastro.setBackground(new java.awt.Color(255, 51, 102));
         btnCadastro.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -74,29 +80,35 @@ public class FormPagnaUser extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout PanelPessoaLayout = new javax.swing.GroupLayout(PanelPessoa);
-        PanelPessoa.setLayout(PanelPessoaLayout);
-        PanelPessoaLayout.setHorizontalGroup(
-            PanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPessoaLayout.createSequentialGroup()
-                .addGroup(PanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelPessoaLayout.createSequentialGroup()
+        javax.swing.GroupLayout PanelCanilLayout = new javax.swing.GroupLayout(PanelCanil);
+        PanelCanil.setLayout(PanelCanilLayout);
+        PanelCanilLayout.setHorizontalGroup(
+            PanelCanilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCanilLayout.createSequentialGroup()
+                .addGroup(PanelCanilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCanilLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnCadastro1))
-                    .addGroup(PanelPessoaLayout.createSequentialGroup()
+                    .addGroup(PanelCanilLayout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(btnCadastro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PanelPessoaLayout.setVerticalGroup(
-            PanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPessoaLayout.createSequentialGroup()
+        PanelCanilLayout.setVerticalGroup(
+            PanelCanilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCanilLayout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btnCadastro1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
         );
+
+        PanelPessoa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PanelPessoasFocusGained(evt);
+            }
+        });
 
         btnCadastro2.setBackground(new java.awt.Color(255, 51, 102));
         btnCadastro2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -118,22 +130,22 @@ public class FormPagnaUser extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout PanelCanilLayout = new javax.swing.GroupLayout(PanelCanil);
-        PanelCanil.setLayout(PanelCanilLayout);
-        PanelCanilLayout.setHorizontalGroup(
-            PanelCanilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCanilLayout.createSequentialGroup()
+        javax.swing.GroupLayout PanelPessoaLayout = new javax.swing.GroupLayout(PanelPessoa);
+        PanelPessoa.setLayout(PanelPessoaLayout);
+        PanelPessoaLayout.setHorizontalGroup(
+            PanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelPessoaLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addComponent(btnCadastro2)
                 .addContainerGap(108, Short.MAX_VALUE))
-            .addGroup(PanelCanilLayout.createSequentialGroup()
+            .addGroup(PanelPessoaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnCadastro3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        PanelCanilLayout.setVerticalGroup(
-            PanelCanilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCanilLayout.createSequentialGroup()
+        PanelPessoaLayout.setVerticalGroup(
+            PanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelPessoaLayout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btnCadastro3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
@@ -147,24 +159,24 @@ public class FormPagnaUser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelCanil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(PanelCanil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelCanil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(12, 12, 12)
-                    .addComponent(PanelCanil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(12, 12, 12)))
         );
 
@@ -186,6 +198,22 @@ public class FormPagnaUser extends javax.swing.JFrame {
     private void btnCadastro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastro3ActionPerformed
         FormExibirPets.Gen().setVisible(true);
     }//GEN-LAST:event_btnCadastro3ActionPerformed
+
+    private void PanelPessoasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PanelPessoasFocusGained
+        
+        
+        
+    }//GEN-LAST:event_PanelPessoasFocusGained
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        if(PessoaBD.Gen().consultarPessoaCpfExiste(FormLogin.Gen().getUserID())){
+                PanelPessoa.setVisible(true);
+                PanelCanil.setVisible(false);
+            }else{
+                PanelCanil.setVisible(true);
+                PanelPessoa.setVisible(false);
+            }  
+    }//GEN-LAST:event_formFocusGained
 
     /**
      * @param args the command line arguments

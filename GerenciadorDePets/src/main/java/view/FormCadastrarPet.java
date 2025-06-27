@@ -114,7 +114,12 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblGenero.setToolTipText("");
         lblGenero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jcboxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        jcboxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Femea" }));
+        jcboxGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcboxGeneroActionPerformed(evt);
+            }
+        });
 
         lblHabilidades.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblHabilidades.setText("Informe as Habilidades do Pet (opcional)");
@@ -274,6 +279,10 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtfieldDataNascimentoKeyTyped
 
+    private void jcboxGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcboxGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcboxGeneroActionPerformed
+
     private boolean verificaData(String dataInformada){
         String dateFormat = "dd/MM/uuuu";
 
@@ -362,7 +371,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     private void cadastrarPet(){
         if(verificarCampos()){
             
-            Pet.Gen().setCid(1); //Uid do canil registrando o pet
+            Pet.Gen().setCid(1); 
             Pet.Gen().setNome(txtfieldNome.getText());
             Pet.Gen().setRaca(txtfieldRaca.getText());    
             Pet.Gen().setdataNascimento(converterStringData(txtfieldDataNascimento.getText()));

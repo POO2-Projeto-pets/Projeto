@@ -360,7 +360,6 @@ public class FormLogin extends javax.swing.JFrame {
                 Pessoa.Gen().setCpf(txtfieldID.getText());
                 FormPagnaUser.Gen().setVisible(true);
             }else if(txtfieldID.getText().length() == 14){
-                Canil.Gen().setCnpj(txtfieldID.getText());
                 FormPagnaUser.Gen().setVisible(true);
             }    
         }
@@ -423,6 +422,10 @@ public class FormLogin extends javax.swing.JFrame {
     }
     public String getBdSenha(){
         return txtfieldBdSenha.getText();
+    }
+    
+    public String getUserID(){
+        return txtfieldID.getText();
     }
             
             

@@ -121,7 +121,7 @@ public class PetBD {
     
     public void inserirPet(Pet pet){
         String sql1 = "INSERT INTO Pet(pet_id, can_id, foto, nome, raca, dataNascimento, genero, habilidades, especie)  "
-                + "VALUES(DEFAULT,?,?,?,?,?,?,?,?)";
+                + "VALUES(DEFAULT,?,?,?,?,?,?::gen,?,?)";
         try{
             Class.forName(driver);
             con = Conexao.getCon();
