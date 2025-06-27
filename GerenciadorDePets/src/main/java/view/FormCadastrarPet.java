@@ -306,23 +306,41 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     }
     
     private boolean verificarCampos(){
-    // txtfieldDataNascimento;
-    // txtfieldEspecie;
-    // txtfieldHabilidades;
-    // txtfieldNome;
-    // txtfieldRaca;
-        
         // Nome
         if(txtfieldNome.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Informe o campo NOME DO PET", "ERRO AO FINALIZAR", 1);
+            JOptionPane.showMessageDialog(null, "Informe o campo NOME do pet", "ERRO AO FINALIZAR", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        
         // Raça
+        if(txtfieldRaca.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Informe o campo RAÇA do pet", "ERRO AO FINALIZAR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
         // Espécie
+        if(txtfieldEspecie.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Informe o campo RAÇA do pet", "ERRO AO FINALIZAR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
         // Data Nascimento
-        // Genero
-        // Habilidades
+        if(txtfieldDataNascimento.getText().trim().isEmpty() || !verificaData(txtfieldDataNascimento.getText())){
+            JOptionPane.showMessageDialog(null, "Informe uma DATA DE NASCIMENTO válida", "ERRO AO FINALIZAR", JOptionPane.ERROR_MESSAGE);
+            txtfieldDataNascimento.setText("");
+            return false;   
+        }
+        
+        // Genero - não tem como não ser preenchido
+        // Habilidades - opcional
+        
         // Foto
+        if(arquivoFoto == null){
+            JOptionPane.showMessageDialog(null, "Adicione uma FOTO para o pet", "ERRO AO FINALIZAR", JOptionPane.ERROR_MESSAGE);
+            return false;      
+        }
+        
+        // Todos os campos estão válidoso
         
         return true;
     }
