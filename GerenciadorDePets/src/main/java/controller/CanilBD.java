@@ -91,8 +91,38 @@ public class CanilBD {
         return null; // retorna o canil encontrado
     }
     
-    public void atualizarCanil(Canil canil){
-        // Não pode mudar ID
-        // Não pode mudar CNPJ
+    public void atualizarCanil(Canil canil, int uid){
+        String sql1 = "UPDATE Canil SET nome = ?, email = ?, senha = ? WHERE uid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, canil.getNome());
+            ps.setString(2, canil.getEmail());
+            ps.setString(3, canil.getSenha());
+            ps.setInt(4, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Canil...(CanilBD)\n");                                                       
+            System.out.println(e);
+        }   
+    }
+    
+    public void deletarCanil(int uid){     
+        String sql1 = "DELETE FROM Canil WHERE  cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Canil...(CanilBD)\n");
+            System.out.println(e);
+        }
     }
 }

@@ -150,17 +150,16 @@ public class PessoaBD {
         }catch(ClassNotFoundException | SQLException e){
             System.out.println("\nErro ao atualizar Pessoa...(PessoaBD)\n");                                                       
             System.out.println(e);
-        }
-        
+        }       
     }
     
-    public void deletarPessoaCpf(String cpf){     
-        String sql1 = "DELETE FROM Pessoa WHERE  cpf = ?";
+    public void deletarPessoa(int uid){     
+        String sql1 = "DELETE FROM Pessoa WHERE  uid = ?";
         try{
             Class.forName(driver);
             con = Conexao.getCon();         
             ps = con.prepareStatement(sql1);
-            ps.setString(1, cpf); 
+            ps.setInt(1, uid); 
             ps.executeUpdate();
             ps.close();
             con.close();

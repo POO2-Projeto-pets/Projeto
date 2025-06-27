@@ -4,7 +4,9 @@
  */
 package view;
 
+import controller.PetBD;
 import java.io.File;
+import java.sql.Date;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Pet;
@@ -18,9 +20,20 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     /**
      * Creates new form FormCadastrarPet
      */
-    public FormCadastrarPet() {
+    //Singleton
+    private static FormCadastrarPet gerFormCadastrarPet;
+
+    private FormCadastrarPet() {
         initComponents();
     }
+    
+    public static FormCadastrarPet Gen(){
+        if(gerFormCadastrarPet == null){
+            gerFormCadastrarPet = new FormCadastrarPet();
+        }
+        return gerFormCadastrarPet;
+    }
+    //Singleton
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +62,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnFinalizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNome.setText("Digite o Nome do Pet:");
@@ -224,12 +237,23 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         int resultado = fileChooser.showDialog(this, "Selecionar");
         if(resultado == JFileChooser.APPROVE_OPTION){
             arquivo = fileChooser.getSelectedFile();
+            
             txtArquivoSelecionado.setText("Arquivo Selecionado: " + arquivo.getName());
+       
         }
     }
     
     private void cadastrarPet(){
-        // Recuper Dados do pet
+            Pet.Gen().setCid(1); //Uid do canil registrando o pet
+            //Pet.Gen().setFoto();
+            Pet.Gen().setNome(txtfieldNome.getText());
+            Pet.Gen().setRaca(txtfieldRaca.getText());    
+            Pet.Gen().setdataNascimento(Date.valueOf(txtfieldDataNascimento.getText()));
+            Pet.Gen().setGenero(jcboxGenero.getSelectedItem().toString());
+            Pet.Gen().setHabilidades(txtfieldHabilidades.getText());
+            Pet.Gen().setEspecie(txtfieldEspecie.getText());
+            
+            PetBD.Gen().inserirPet(Pet.Gen());   
     }
 
     

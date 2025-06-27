@@ -18,7 +18,7 @@ public class Pet {
     private String nome;
     private String raca;
     private Float peso;
-    private Date idade;
+    private Date dataNascimento;
     private String genero;
     private String habilidades;
     private String especie;
@@ -26,9 +26,7 @@ public class Pet {
     //Singleton
     private static Pet gerPet;
 
-    private Pet(){
-        
-    }
+    private Pet(){}
     
     public static Pet Gen(){
         if(gerPet == null){
@@ -46,7 +44,7 @@ public class Pet {
         this.nome = nome;
         this.raca = raca;
         this.peso = peso;
-        this.idade = idade;
+        this.dataNascimento = idade;
         this.genero = genero;
         this.habilidades = habilidades;
         this.especie = especie;
@@ -108,12 +106,12 @@ public class Pet {
         this.peso = peso;
     }
 
-    public Date getIdade() {
-        return idade;
+    public Date getdataNascimento() {
+        return dataNascimento;
     }
 
-    public void setIdade(Date idade) {
-        this.idade = idade;
+    public void setdataNascimento(Date idade) {
+        this.dataNascimento = idade;
     }
 
     public String getGenero() {

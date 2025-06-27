@@ -4,6 +4,7 @@
  */
 package controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Produto;
@@ -35,7 +36,7 @@ public class ProdutoBD {
 
     public void criaTable() {
         String sql1 = "CREATE TABLE IF NOT EXISTS Produto ("
-            + "id int primary key,"
+            + "id SERIAL primary key,"
             + "nome text,"
             + "preco float"
             + ")";
@@ -85,7 +86,26 @@ public class ProdutoBD {
             System.out.println("\nErro ao criar relacão petshop_produto...(ProdutoBD)");
             System.out.println(e);
         }
-    }    
+    }   
+    
+    PreparedStatement ps = null;
+    
+    public void inserirProduto(Produto produto){
+        String sql1 = "INSERT INTO Produto VALUES(DEFAULT,?,?)";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, produto.getNome());
+            ps.setFloat(2, produto.getPreco());
+            ps.execute();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("Erro ao inserindo dados de Produto...(ProdutoBD)");
+            System.out.println(e);
+        }
+    }
     
     public Produto consultarProduto(int id){
         return null;
@@ -93,5 +113,21 @@ public class ProdutoBD {
     
     public void atualizarProduto(Produto produto){
         // Não pode mudar ID
+    }
+    
+     public void deletarProduto(int id){     
+        String sql1 = "DELETE FROM Produto WHERE  id = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, id); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Produto...(ProdutoBD)\n");
+            System.out.println(e);
+        }
     }
 }

@@ -93,8 +93,38 @@ public class ClinicaBD {
        return null;
     }
     
-    public void atualizarClinica(Clinica clinica){
-        // Não pode mudar ID
-        // Não pode mudar CNPJ
+    public void atualizarClinica(Clinica clinica, int uid){
+        String sql1 = "UPDATE Clinica SET nome = ?, email = ?, senha = ? WHERE uid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, clinica.getNome());
+            ps.setString(2, clinica.getEmail());
+            ps.setString(3, clinica.getSenha());
+            ps.setInt(4, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Clinica...(ClinicaBD)\n");                                                       
+            System.out.println(e);
+        }   
+    }
+    
+    public void deletarClinica(int uid){     
+        String sql1 = "DELETE FROM Clinica WHERE  cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Clinica...(ClinicaBD)\n");
+            System.out.println(e);
+        }
     }
 }

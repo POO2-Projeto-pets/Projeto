@@ -355,7 +355,8 @@ public class FormLogin extends javax.swing.JFrame {
     private void entrar(){
         if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
             if(true){
-                
+                //Temporario
+                FormCadastrarPet.Gen().setVisible(true);
             }
         }
         else{

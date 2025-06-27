@@ -18,9 +18,7 @@ public class PetBD {
     //Singleton
     private static PetBD gerPetBD;
 
-    private PetBD(){
-        
-    }
+    private PetBD(){}
     
     public static PetBD Gen(){
         if(gerPetBD == null){
@@ -64,8 +62,7 @@ public class PetBD {
             + "can_id int,"    
             + "foto bytea,"
             + "nome text," 
-            + "raca text,"
-            + "peso float,"  
+            + "raca text,"  
             + "dataNascimento date,"
             + "genero gen,"
             + "habilidades text,"      
@@ -120,27 +117,11 @@ public class PetBD {
         }
     }
     
-    /*
-            + "pet_id SERIAL primary key,"
-            + "user_id int,"
-            + "can_id int,"    
-            + "foto bytea,"
-            + "nome text," 
-            + "raca text,"
-            + "peso float,"  
-            + "dataNascimento date,"
-            + "genero gen,"
-            + "habilidades text,"      
-            + "especie text,"
-            + "adotado boolean,"
-    
-    */
-    
     PreparedStatement ps = null;
     
     public void inserirPet(Pet pet){
-        String sql1 = "INSERT INTO Pet(pet_id, can_id, foto, nome, raca, peso, dataNascimento, genero, habilidades, especie)  "
-                + "VALUES(DEFAULT,?,?,?,?,?,?,?,?,?)";
+        String sql1 = "INSERT INTO Pet(pet_id, can_id, foto, nome, raca, dataNascimento, genero, habilidades, especie)  "
+                + "VALUES(DEFAULT,?,?,?,?,?,?,?,?)";
         try{
             Class.forName(driver);
             con = Conexao.getCon();
@@ -148,12 +129,11 @@ public class PetBD {
             ps.setInt(1, pet.getCid());
             ps.setBytes(2, pet.getFoto());
             ps.setString(3, pet.getNome());
-            ps.setString(3, pet.getRaca());
-            ps.setFloat(5, pet.getPeso());
-            ps.setDate(6, pet.getIdade());
-            ps.setString(7, pet.getGenero());
-            ps.setString(8, pet.getHabilidades());
-            ps.setString(9, pet.getEspecie());
+            ps.setString(4, pet.getRaca());
+            ps.setDate(5, pet.getdataNascimento());
+            ps.setString(6, pet.getGenero());
+            ps.setString(7, pet.getHabilidades());
+            ps.setString(8, pet.getEspecie());
             ps.executeUpdate();
             ps.close();
             con.close();
@@ -167,7 +147,26 @@ public class PetBD {
         return null;
     }
     
-    public void atualizarPet(Pet pet){
-        // Pode mudar: foto, corPredominante, nome, habilidades e dadosClinicos
+    public void atualizarPet(Pet pet, int pid){
+        String sql1 = "UPDATE Pet SET foto = ?, nome = ?, raca = ?, dataNascimento = ?, genero = ?, habilidades = ?, especie = ? WHERE pid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setBytes(1, pet.getFoto());
+            ps.setString(2, pet.getNome());
+            ps.setString(3, pet.getRaca());
+            ps.setDate(4, pet.getdataNascimento());
+            ps.setString(5, pet.getGenero());
+            ps.setString(6, pet.getHabilidades());
+            ps.setString(7, pet.getEspecie()); 
+            ps.setInt(8, pid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Pet...(PetBD)\n");                                                       
+            System.out.println(e);
+        }       
     }
 }

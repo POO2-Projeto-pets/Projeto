@@ -111,8 +111,38 @@ public class VeterinarioBD {
         return null;
     }
     
-    public void atualizarVeterinario(Veterinario veterinario){
-        // Não pode mudar ID
-        // Não pode mudar CNPJ
+    public void atualizarVeterinario(Veterinario veterinario, int uid){
+        String sql1 = "UPDATE Veterinario SET nome = ?, email = ?, senha = ? WHERE uid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, veterinario.getNome());
+            ps.setString(2, veterinario.getEmail());
+            ps.setString(3, veterinario.getSenha());
+            ps.setInt(4, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Veterinario...(VeterinarioBD)\n");                                                       
+            System.out.println(e);
+        }  
+    }
+    
+    public void deletarVeterinario(int uid){     
+        String sql1 = "DELETE FROM Veterinario WHERE  cpf = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Veterinario...(VeterinarioBD)\n");
+            System.out.println(e);
+        }
     }
 }
