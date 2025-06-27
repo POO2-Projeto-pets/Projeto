@@ -9,10 +9,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -345,6 +349,17 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         return true;
     }
     
+    private java.sql.Date converterStringData(String dataInformada){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            java.util.Date dataUtil = formatter.parse(dataInformada);
+            return new java.sql.Date(dataUtil.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(FormCadastrarPet.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
     private void cadastrarPet(){
         if(verificarCampos()){
             
@@ -352,7 +367,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
             //Pet.Gen().setFoto();
             Pet.Gen().setNome(txtfieldNome.getText());
             Pet.Gen().setRaca(txtfieldRaca.getText());    
-            Pet.Gen().setdataNascimento(Date.valueOf(txtfieldDataNascimento.getText()));
+            Pet.Gen().setdataNascimento(converterStringData(txtfieldDataNascimento.getText()));
             Pet.Gen().setGenero(jcboxGenero.getSelectedItem().toString());
             Pet.Gen().setHabilidades(txtfieldHabilidades.getText());
             Pet.Gen().setEspecie(txtfieldEspecie.getText());
