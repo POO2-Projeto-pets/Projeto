@@ -111,8 +111,22 @@ public class ProdutoBD {
         return null;
     }
     
-    public void atualizarProduto(Produto produto){
-        // Não pode mudar ID
+    public void atualizarProduto(Produto produto, int id){
+        String sql1 = "UPDATE Produto SET nome = ?, preco = ? WHERE uid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, produto.getNome());
+            ps.setFloat(2, produto.getPreco());
+            ps.setInt(3, id); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Produto...(ProdutoBD)\n");                                                       
+            System.out.println(e);
+        }   
     }
     
      public void deletarProduto(int id){     

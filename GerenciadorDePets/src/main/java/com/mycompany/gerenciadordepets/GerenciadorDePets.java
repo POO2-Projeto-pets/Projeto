@@ -3,7 +3,6 @@
  */
 
 package com.mycompany.gerenciadordepets;
-import controller.*;
 import view.*;
 
 /**
@@ -13,6 +12,6 @@ import view.*;
 public class GerenciadorDePets {
 
     public static void main(String[] args) {
-        FormLogin.Gen().setVisible(true);
+        FormLogin.Gen().setVisible(true);     
     }
 }
