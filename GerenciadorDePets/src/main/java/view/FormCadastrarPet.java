@@ -346,6 +346,8 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     }
     
     private void cadastrarPet(){
+        if(verificarCampos()){
+            
             Pet.Gen().setCid(1); //Uid do canil registrando o pet
             //Pet.Gen().setFoto();
             Pet.Gen().setNome(txtfieldNome.getText());
@@ -354,8 +356,10 @@ public class FormCadastrarPet extends javax.swing.JFrame {
             Pet.Gen().setGenero(jcboxGenero.getSelectedItem().toString());
             Pet.Gen().setHabilidades(txtfieldHabilidades.getText());
             Pet.Gen().setEspecie(txtfieldEspecie.getText());
+            Pet.Gen().setFoto(arquivoFoto);
             
             PetBD.Gen().inserirPet(Pet.Gen());   
+        }
     }
 
     
