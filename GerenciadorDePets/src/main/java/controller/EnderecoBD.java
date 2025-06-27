@@ -98,4 +98,44 @@ public class EnderecoBD {
             System.out.println(e);
         }
     }
+    
+    public Endereco consultarEndereco(int uid){
+        return null;
+    }
+    
+    public void atualizarEndereco(Endereco endereco, int uid){
+        String sql1 = "UPDATE Endereco SET  estado = ?, cidade = ?, rua = ?, numero = ? WHERE uid = ?";        
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setString(1, endereco.getEstado());
+            ps.setString(2, endereco.getCidade());
+            ps.setString(3, endereco.getRua());
+            ps.setInt(4, endereco.getNumero());  
+            ps.setInt(5, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();            
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao atualizar Endereco...(EnderecoBD)\n");                                                       
+            System.out.println(e);
+        }   
+    }
+    
+     public void deletarEndereco(int uid){     
+        String sql1 = "DELETE FROM Endereco WHERE  uid = ?";
+        try{
+            Class.forName(driver);
+            con = Conexao.getCon();         
+            ps = con.prepareStatement(sql1);
+            ps.setInt(1, uid); 
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        }catch(ClassNotFoundException | SQLException e){
+            System.out.println("\nErro ao deletar Endereco...(EnderecoBD)\n");
+            System.out.println(e);
+        }
+    }
 }
