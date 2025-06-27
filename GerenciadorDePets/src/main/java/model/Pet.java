@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.io.FileInputStream;
 import java.sql.Date;
 
 /**
@@ -14,7 +15,7 @@ public class Pet {
     private int pid;
     private int cid;
     private int uid;
-    private byte[] foto;
+    private FileInputStream foto;
     private String nome;
     private String raca;
     private Float peso;
@@ -36,7 +37,7 @@ public class Pet {
     }
     //Singleton
 
-    public Pet(int pid, int cid, int uid, byte[] foto, String nome, String raca, Float peso, Date idade, String genero, String habilidades, String especie) {
+    public Pet(int pid, int cid, int uid, FileInputStream foto, String nome, String raca, Float peso, Date idade, String genero, String habilidades, String especie) {
         this.pid = pid;
         this.cid = cid;
         this.uid = uid;
@@ -74,11 +75,11 @@ public class Pet {
         this.cid = cid;
     }
 
-    public byte[] getFoto() {
+    public FileInputStream getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(FileInputStream foto) {
         this.foto = foto;
     }   
     

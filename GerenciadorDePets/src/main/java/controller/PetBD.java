@@ -127,7 +127,7 @@ public class PetBD {
             con = Conexao.getCon();
             ps = con.prepareStatement(sql1);
             ps.setInt(1, pet.getCid());
-            ps.setBytes(2, pet.getFoto());
+            ps.setBinaryStream(2, pet.getFoto());
             ps.setString(3, pet.getNome());
             ps.setString(4, pet.getRaca());
             ps.setDate(5, pet.getdataNascimento());
@@ -153,7 +153,7 @@ public class PetBD {
             Class.forName(driver);
             con = Conexao.getCon();         
             ps = con.prepareStatement(sql1);
-            ps.setBytes(1, pet.getFoto());
+            ps.setBinaryStream(1, pet.getFoto());
             ps.setString(2, pet.getNome());
             ps.setString(3, pet.getRaca());
             ps.setDate(4, pet.getdataNascimento());
