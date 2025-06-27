@@ -7,6 +7,8 @@ package view;
 import sources.*;
 import controller.*;
 import javax.swing.JOptionPane;
+import model.Canil;
+import model.Pessoa;
 
 /**
  *
@@ -39,9 +41,9 @@ public class FormLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtfieldEmail = new javax.swing.JTextField();
+        txtfieldID = new javax.swing.JTextField();
         lblSenha = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         txtfieldSenha = new javax.swing.JPasswordField();
         tbutShowPassword = new javax.swing.JToggleButton();
         btnCadastro = new javax.swing.JButton();
@@ -66,10 +68,10 @@ public class FormLogin extends javax.swing.JFrame {
         setUndecorated(true);
         setSize(new java.awt.Dimension(520, 590));
 
-        txtfieldEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtfieldEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtfieldID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfieldEmailActionPerformed(evt);
+                txtfieldIDActionPerformed(evt);
             }
         });
 
@@ -78,10 +80,10 @@ public class FormLogin extends javax.swing.JFrame {
         lblSenha.setToolTipText("");
         lblSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblEmail.setText("E-mail");
-        lblEmail.setToolTipText("");
-        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblID.setText("CPF/CNPJ");
+        lblID.setToolTipText("");
+        lblID.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtfieldSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +259,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtfieldEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtfieldID, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtfieldSenha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -269,8 +271,8 @@ public class FormLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(admCheckbox)
-                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblID))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,9 +288,9 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEmail)
+                .addComponent(lblID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtfieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -309,9 +311,9 @@ public class FormLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtfieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldEmailActionPerformed
+    private void txtfieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfieldIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfieldEmailActionPerformed
+    }//GEN-LAST:event_txtfieldIDActionPerformed
 
     
     
@@ -353,11 +355,14 @@ public class FormLogin extends javax.swing.JFrame {
     
     
     private void entrar(){
-        if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){
-            if(true){
-                //Temporario
-                FormCadastrarPet.Gen().setVisible(true);
-            }
+        if(Conexao.testeConexao(txtfieldBdUrl.getText(), txtfieldBdUser.getText(), txtfieldBdSenha.getText())){          
+            if(txtfieldID.getText().length() == 11){
+                Pessoa.Gen().setCpf(txtfieldID.getText());
+                FormPagnaUser.Gen().setVisible(true);
+            }else if(txtfieldID.getText().length() == 14){
+                Canil.Gen().setCnpj(txtfieldID.getText());
+                FormPagnaUser.Gen().setVisible(true);
+            }    
         }
         else{
             JOptionPane.showMessageDialog(null, "Problema ao conectar com Banco de Dados", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -369,7 +374,7 @@ public class FormLogin extends javax.swing.JFrame {
         txtfieldBdUser.setEnabled(state);
         txtfieldBdUrl.setEnabled(state);
         txtfieldBdSenha.setEnabled(state);
-        txtfieldEmail.setEnabled(state);
+        txtfieldID.setEnabled(state);
         txtfieldSenha.setEnabled(state);
     }
     
@@ -502,7 +507,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblbdsenha;
@@ -513,7 +518,7 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtfieldBdSenha;
     private javax.swing.JTextField txtfieldBdUrl;
     private javax.swing.JTextField txtfieldBdUser;
-    private javax.swing.JTextField txtfieldEmail;
+    private javax.swing.JTextField txtfieldID;
     private javax.swing.JPasswordField txtfieldSenha;
     // End of variables declaration//GEN-END:variables
 }

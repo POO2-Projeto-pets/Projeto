@@ -237,7 +237,7 @@ public class FormCadastrarPet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelecionarFotoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        Gen().dispose();    
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
@@ -363,7 +363,6 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         if(verificarCampos()){
             
             Pet.Gen().setCid(1); //Uid do canil registrando o pet
-            //Pet.Gen().setFoto();
             Pet.Gen().setNome(txtfieldNome.getText());
             Pet.Gen().setRaca(txtfieldRaca.getText());    
             Pet.Gen().setdataNascimento(converterStringData(txtfieldDataNascimento.getText()));
