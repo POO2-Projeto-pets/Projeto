@@ -6,8 +6,14 @@ package view;
 
 import controller.PetBD;
 import java.io.File;
-import java.sql.Date;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Pet;
 
@@ -16,7 +22,8 @@ import model.Pet;
  * @author Pedro
  */
 public class FormCadastrarPet extends javax.swing.JFrame {
-
+    private FileInputStream arquivoFoto = null;
+    
     /**
      * Creates new form FormCadastrarPet
      */
@@ -91,6 +98,11 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         lblEspecie.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtfieldDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtfieldDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfieldDataNascimentoKeyTyped(evt);
+            }
+        });
 
         lblGenero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblGenero.setText("Informe o Gênero do Pet");
@@ -228,6 +240,52 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         cadastrarPet();
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
+    private void txtfieldDataNascimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfieldDataNascimentoKeyTyped
+        char c = evt.getKeyChar();
+        String texto = txtfieldDataNascimento.getText();
+
+        // Permitir apenas números e backspace
+        if (!Character.isDigit(c) && c != '\b') {
+            evt.consume();
+            return;
+        }
+
+        // Impedir digitação após 10 caracteres (dd/MM/yyyy)
+        if (texto.length() >= 10 && c != '\b') {
+            evt.consume();
+            return;
+        }
+
+        // Inserir '/' automaticamente após dia e mês
+        if (Character.isDigit(c)) {
+            if (texto.length() == 2 || texto.length() == 5) {
+                txtfieldDataNascimento.setText(texto + "/");
+            }
+        }
+
+        // Se estiver apagando
+        if (c == '\b' && (texto.endsWith("/") && (texto.length() == 3 || texto.length() == 6))) {
+            // Remover também o caractere anterior (número)
+            txtfieldDataNascimento.setText(texto.substring(0, texto.length() - 1));
+        }
+    }//GEN-LAST:event_txtfieldDataNascimentoKeyTyped
+
+    private boolean verificaData(String dataInformada){
+        String dateFormat = "dd/MM/uuuu";
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(dateFormat).withResolverStyle(ResolverStyle.STRICT);
+        try {
+            LocalDate hoje = LocalDate.now();
+            LocalDate date = LocalDate.parse(dataInformada, dateTimeFormatter);
+            if(date.isAfter(hoje)){
+                return false;
+            }
+            return true;
+        }catch(DateTimeParseException e){
+            return false;
+        }
+    }
+    
     private void selecionarFoto() {
         JFileChooser fileChooser = new JFileChooser();
         File arquivo = null;
@@ -237,10 +295,35 @@ public class FormCadastrarPet extends javax.swing.JFrame {
         int resultado = fileChooser.showDialog(this, "Selecionar");
         if(resultado == JFileChooser.APPROVE_OPTION){
             arquivo = fileChooser.getSelectedFile();
-            
-            txtArquivoSelecionado.setText("Arquivo Selecionado: " + arquivo.getName());
-       
+            try{
+                arquivoFoto = new FileInputStream(arquivo);
+                txtArquivoSelecionado.setText("Arquivo Selecionado: " + arquivo.getName());
+            }catch(FileNotFoundException e){
+                System.out.println("Arquivo não encontrado");
+            }
         }
+    }
+    
+    private boolean verificarCampos(){
+    // txtfieldDataNascimento;
+    // txtfieldEspecie;
+    // txtfieldHabilidades;
+    // txtfieldNome;
+    // txtfieldRaca;
+        
+        // Nome
+        if(txtfieldNome.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Informe o campo NOME DO PET", "ERRO AO FINALIZAR", 1);
+            return false;
+        }
+        // Raça
+        // Espécie
+        // Data Nascimento
+        // Genero
+        // Habilidades
+        // Foto
+        
+        return true;
     }
     
     private void cadastrarPet(){
